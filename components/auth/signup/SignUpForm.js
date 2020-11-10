@@ -1,24 +1,24 @@
-import { FormControl, FormLabel, Input } from '@chakra-ui/core';
-import { useState } from 'react';
-import AuthLayout from '../AuthLayout';
-import ConfirmPassword from '../ConfirmPassword';
-import PasswordInput from '../PasswordInput';
-import SubmitButton from '../SubmitButton';
-import UsernameInput from '../UsernameInput';
+import ErrorAlert from '../alerts/ErrorAlert';
+import SuccessAlert from '../alerts/SuccessAlert';
+import AuthLayout from '../form/AuthLayout';
+import ChangeAuth from '../form/ChangeAuth';
+import ConfirmPassword from '../form/ConfirmPassword';
+import PasswordInput from '../form/PasswordInput';
+import SubmitButton from '../form/SubmitButton';
+import UsernameInput from '../form/UsernameInput';
+import EmailInput from './EmailInput';
 
-function SignUpForm() {
-  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
-
+function SignUpForm({ formik, success, error, errorMessage }) {
   return (
-    <AuthLayout>
+    <AuthLayout submitForm={formik.handleSubmit}>
+      {success && <SuccessAlert text='Account created' />}
+      {error && <ErrorAlert errorMessage={errorMessage} />}
       <UsernameInput />
-      <FormControl>
-        <FormLabel htmlFor='email'>Email address</FormLabel>
-        <Input type='email' id='email' />
-      </FormControl>
+      <EmailInput />
       <PasswordInput />
       <ConfirmPassword />
-      <SubmitButton text='Sign Up' />
+      <SubmitButton text='Sign Up' loading={formik.isSubmitting} />
+      <ChangeAuth />
     </AuthLayout>
   );
 }

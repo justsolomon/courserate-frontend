@@ -1,6 +1,7 @@
 import { Stack } from '@chakra-ui/core';
+import { Formik } from 'formik';
 
-function AuthLayout({ children }) {
+function AuthLayout({ children, submitForm }) {
   return (
     <Stack
       as='form'
@@ -12,6 +13,7 @@ function AuthLayout({ children }) {
       mx='auto'
       mt='8'
       spacing='4'
+      onSubmit={submitForm}
     >
       {children}
     </Stack>
