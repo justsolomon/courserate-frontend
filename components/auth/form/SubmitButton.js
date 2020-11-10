@@ -1,6 +1,6 @@
 import { Button, LightMode } from '@chakra-ui/core';
 
-function SubmitButton({ text }) {
+function SubmitButton({ text, loading }) {
   return (
     <LightMode>
       <Button
@@ -11,6 +11,7 @@ function SubmitButton({ text }) {
         _hover={{ bg: 'green.500' }}
         fontSize='1.05rem'
         letterSpacing='wide'
+        isLoading={loading}
       >
         {text}
       </Button>
