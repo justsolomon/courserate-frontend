@@ -1,5 +1,5 @@
 import { Box } from '@chakra-ui/core';
-import Header from '../Header/Header';
+import Header from '../header/Header';
 
 function Layout({ children }) {
   return (
