@@ -1,24 +1,18 @@
-import { FormControl, FormLabel, Input } from '@chakra-ui/core';
-import { useState } from 'react';
 import AuthLayout from '../AuthLayout';
 import ConfirmPassword from '../ConfirmPassword';
 import PasswordInput from '../PasswordInput';
 import SubmitButton from '../SubmitButton';
 import UsernameInput from '../UsernameInput';
+import EmailInput from './EmailInput';
 
-function SignUpForm() {
-  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
-
+function SignUpForm({ formik }) {
   return (
-    <AuthLayout>
+    <AuthLayout submitForm={formik.handleSubmit}>
       <UsernameInput />
-      <FormControl>
-        <FormLabel htmlFor='email'>Email address</FormLabel>
-        <Input type='email' id='email' />
-      </FormControl>
+      <EmailInput />
       <PasswordInput />
       <ConfirmPassword />
-      <SubmitButton text='Sign Up' />
+      <SubmitButton text='Sign Up' loading={formik.isSubmitting} />
     </AuthLayout>
   );
 }

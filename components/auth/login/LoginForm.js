@@ -3,12 +3,12 @@ import PasswordInput from '../PasswordInput';
 import SubmitButton from '../SubmitButton';
 import UsernameInput from '../UsernameInput';
 
-function LoginForm() {
+function LoginForm({ formik }) {
   return (
-    <AuthLayout>
+    <AuthLayout submitForm={formik.handleSubmit}>
       <UsernameInput />
       <PasswordInput />
-      <SubmitButton text='Login' />
+      <SubmitButton text='Login' loading={formik.isSubmitting} />
     </AuthLayout>
   );
 }
