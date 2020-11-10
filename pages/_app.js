@@ -18,6 +18,7 @@ function MyApp({ Component, pageProps }) {
             startPosition={0.1}
             stopDelayMs={200}
             height='2'
+            options={{ showSpinner: false }}
           />
           <CSSReset />
           <Component {...pageProps} />
