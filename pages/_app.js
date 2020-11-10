@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }) {
           color='#63B3ED'
           startPosition={0.1}
           stopDelayMs={200}
-          height='3'
+          height='2'
         />
         <CSSReset />
         <Component {...pageProps} />
