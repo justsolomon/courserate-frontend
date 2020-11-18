@@ -2,9 +2,13 @@ import { useMutation } from '@apollo/client';
 import { Formik } from 'formik';
 import { signupValidation } from '../form/validationSchema';
 import SignUpForm from './SignUpForm';
-import REGISTER_USER from './graphql/signupMutation';
+import REGISTER_USER from './signupMutation';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import {
+  refreshAction,
+  updateAuthState,
+} from '../../../graphql/state/authState';
 
 const values = {
   username: '',
@@ -26,6 +30,14 @@ function SignUpContainer() {
       formActions.setSubmitting(false);
       setError(false);
       setSuccess(true);
+
+      //store data in state
+      updateAuthState(data.register);
+
+      //start countdown to silent refresh
+      const startSilentRefresh = refreshAction();
+      startSilentRefresh();
+
       setTimeout(() => router.push('/'), 1000);
     },
     onError({ message }) {
