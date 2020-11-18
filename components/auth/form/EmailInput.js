@@ -1,19 +1,17 @@
-import {
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
-  Input,
-} from '@chakra-ui/core';
+import { FormControl, FormLabel, Input } from '@chakra-ui/react';
 import { Field } from 'formik';
+import ErrorMessage from './ErrorMessage';
 
 function EmailInput() {
   return (
     <Field name='email'>
       {({ field, form }) => (
-        <FormControl mb='4' isInvalid={form.errors.email && form.touched.email}>
-          <FormLabel htmlFor='email'>Email address</FormLabel>
-          <Input {...field} type='email' id='email' />
-          <FormErrorMessage>{form.errors.email}</FormErrorMessage>
+        <FormControl isInvalid={form.errors.email && form.touched.email}>
+          <FormLabel mb='1' htmlFor='email'>
+            Email address
+          </FormLabel>
+          <Input {...field} type='email' id='email' borderRadius='base' />
+          <ErrorMessage error={form.errors.email} />
         </FormControl>
       )}
     </Field>

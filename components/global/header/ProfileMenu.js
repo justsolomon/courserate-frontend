@@ -1,12 +1,13 @@
 import { useMutation } from '@apollo/client';
+import { ChevronDownIcon } from '@chakra-ui/icons';
 import {
   Box,
-  Icon,
+  Button,
   Menu,
   MenuButton,
   MenuDivider,
   MenuList,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { accessToken, profile } from '../../../graphql/state/authState';
 import { updateStorageStatus } from '../../auth/actions/authActions';
@@ -30,9 +31,11 @@ function ProfileMenu() {
 
   console.log(profile());
   return (
-    <Menu w='150px'>
+    <Menu closeOnBlur={true}>
       <MenuButton
-        rounded='md'
+        as={Button}
+        variant='ghost'
+        rounded='base'
         width='150px'
         height='40px'
         d='flex'
@@ -41,11 +44,11 @@ function ProfileMenu() {
         px='2'
         borderWidth='1px'
         _focus={{ outline: '0' }}
+        rightIcon={<ChevronDownIcon />}
       >
         <Box as='span'>{username}</Box>
-        <Icon name='chevron-down' />
       </MenuButton>
-      <MenuList>
+      <MenuList borderRadius='base'>
         <MenuItem text='View Profile' />
         <MenuItem text='Add Course' />
         <MenuDivider />

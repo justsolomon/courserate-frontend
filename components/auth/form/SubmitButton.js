@@ -1,4 +1,4 @@
-import { Button, LightMode } from '@chakra-ui/core';
+import { Button, LightMode } from '@chakra-ui/react';
 
 function SubmitButton({ text, loading }) {
   return (
@@ -12,6 +12,7 @@ function SubmitButton({ text, loading }) {
         fontSize='1.05rem'
         letterSpacing='wide'
         isLoading={loading}
+        borderRadius='base'
       >
         {text}
       </Button>

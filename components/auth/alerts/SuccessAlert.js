@@ -1,8 +1,8 @@
-import { Alert, AlertIcon } from '@chakra-ui/core';
+import { Alert, AlertIcon } from '@chakra-ui/react';
 
 function SuccessAlert({ text }) {
   return (
-    <Alert status='success' mb='3' borderRadius='md'>
+    <Alert status='success' borderRadius='base'>
       <AlertIcon />
       {text} successfully!
     </Alert>

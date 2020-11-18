@@ -1,4 +1,4 @@
-import { Box, Stack, useColorMode } from '@chakra-ui/core';
+import { Box, Stack, useColorMode } from '@chakra-ui/react';
 import AppName from './AppName';
 import ToggleThemeButton from './ToggleThemeButton';
 import AuthRoutes from './AuthRoutes';
@@ -18,7 +18,7 @@ function Header() {
       borderBottom='1px'
       borderBottomColor={borderColor[colorMode]}
       justify='space-between'
-      boxShadow='sm'
+      boxShadow='base'
       position='sticky'
       align='center'
     >

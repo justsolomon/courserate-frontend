@@ -1,5 +1,4 @@
-import { Stack } from '@chakra-ui/core';
-import { Formik } from 'formik';
+import { Stack } from '@chakra-ui/react';
 
 function AuthLayout({ children, submitForm }) {
   return (

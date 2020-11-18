@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Link as PrimaryLink } from '@chakra-ui/core';
+import { Link as PrimaryLink } from '@chakra-ui/react';
 
 function NavLink({ path, text, login }) {
   return (
