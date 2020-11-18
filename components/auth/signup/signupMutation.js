@@ -15,9 +15,11 @@ const REGISTER_USER = gql`
         email: $email
       }
     ) {
-      id
       email
-      token
+      jwt {
+        token
+        expiresIn
+      }
       username
       createdAt
     }

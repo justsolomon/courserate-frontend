@@ -5,8 +5,8 @@ import ChangeAuth from '../form/ChangeAuth';
 import ConfirmPassword from '../form/ConfirmPassword';
 import PasswordInput from '../form/PasswordInput';
 import SubmitButton from '../form/SubmitButton';
-import UsernameInput from '../form/UsernameInput';
-import EmailInput from './EmailInput';
+import UsernameInput from './UsernameInput';
+import EmailInput from '../form/EmailInput';
 
 function SignUpForm({ formik, success, error, errorMessage }) {
   return (
