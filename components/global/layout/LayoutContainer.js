@@ -26,7 +26,8 @@ function LayoutContainer({ children }) {
   refreshAction(startSilentRefresh);
 
   useEffect(() => {
-    const userLoggedIn = JSON.parse(localStorage['loggedIn']);
+    let userLoggedIn = localStorage['loggedIn'];
+    if (userLoggedIn) userLoggedIn = JSON.parse(userLoggedIn);
     console.log(userLoggedIn);
     startSilentRefresh(userLoggedIn);
   }, []);

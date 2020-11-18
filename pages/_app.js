@@ -30,7 +30,9 @@ const client = new ApolloClient({
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
-    loggedIn(JSON.parse(localStorage['loggedIn']));
+    let userLoggedIn = localStorage['loggedIn'];
+    if (userLoggedIn) userLoggedIn = JSON.parse(userLoggedIn);
+    loggedIn(userLoggedIn);
   }, []);
 
   return (
