@@ -43,8 +43,7 @@ function LoginContainer() {
       formActions.setSubmitting(false);
       setSuccess(false);
       setError(true);
-      if (message === 'Wrong Credentials') setErrorMsg('Password is incorrect');
-      else setErrorMsg(message);
+      setErrorMsg(message);
     },
   });
 

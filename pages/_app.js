@@ -1,5 +1,6 @@
-import { ColorModeProvider, CSSReset, ThemeProvider } from '@chakra-ui/core';
+import { ChakraProvider } from '@chakra-ui/react';
 import NextNProgress from 'nextjs-progressbar';
+import 'focus-visible/dist/focus-visible';
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { ApolloProvider } from '@apollo/client';
@@ -37,19 +38,16 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ApolloProvider client={client}>
-      <ThemeProvider>
-        <ColorModeProvider>
-          <NextNProgress
-            color='#63B3ED'
-            startPosition={0.1}
-            stopDelayMs={200}
-            height='2'
-            options={{ showSpinner: false }}
-          />
-          <CSSReset />
-          <Component {...pageProps} />
-        </ColorModeProvider>
-      </ThemeProvider>
+      <ChakraProvider>
+        <NextNProgress
+          color='#63B3ED'
+          startPosition={0.1}
+          stopDelayMs={200}
+          height='2'
+          options={{ showSpinner: false }}
+        />
+        <Component {...pageProps} />
+      </ChakraProvider>
     </ApolloProvider>
   );
 }

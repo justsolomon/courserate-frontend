@@ -1,10 +1,6 @@
-import {
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
-  Input,
-} from '@chakra-ui/core';
+import { FormControl, FormLabel, Input } from '@chakra-ui/react';
 import { Field } from 'formik';
+import ErrorMessage from '../form/ErrorMessage';
 
 function UsernameInput() {
   return (
@@ -12,12 +8,13 @@ function UsernameInput() {
       {({ field, form }) => {
         return (
           <FormControl
-            mb='4'
             isInvalid={form.errors.username && form.touched.username}
           >
-            <FormLabel htmlFor='username'>Username</FormLabel>
-            <Input {...field} type='text' id='username' />
-            <FormErrorMessage>{form.errors.username}</FormErrorMessage>
+            <FormLabel mb='1' htmlFor='username'>
+              Username
+            </FormLabel>
+            <Input {...field} type='text' id='username' borderRadius='base' />
+            <ErrorMessage error={form.errors.username} />
           </FormControl>
         );
       }}

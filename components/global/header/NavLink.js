@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Link as PrimaryLink } from '@chakra-ui/core';
+import { Link as PrimaryLink } from '@chakra-ui/react';
 
 function NavLink({ path, text, login }) {
   return (
@@ -9,6 +9,7 @@ function NavLink({ path, text, login }) {
           textDecoration: 'none',
           color: login && 'green.500',
         }}
+        href={`/${path}`}
       >
         {text}
       </PrimaryLink>

@@ -1,8 +1,8 @@
-import { Alert, AlertIcon } from '@chakra-ui/core';
+import { Alert, AlertIcon } from '@chakra-ui/react';
 
 function ErrorAlert({ errorMessage }) {
   return (
-    <Alert status='error' mb='3' borderRadius='md'>
+    <Alert status='error' borderRadius='base'>
       <AlertIcon />
       {errorMessage}
     </Alert>

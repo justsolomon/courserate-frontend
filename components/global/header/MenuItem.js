@@ -1,9 +1,10 @@
-import { Icon, MenuItem as MenuOption } from '@chakra-ui/core';
+import { EditIcon } from '@chakra-ui/icons';
+import { MenuItem as MenuOption } from '@chakra-ui/react';
 
 function MenuItem({ text, clickAction }) {
   return (
     <MenuOption height='40px' onClick={clickAction}>
-      <Icon name='edit' mr='2' />
+      <EditIcon mr='2' />
       {text}
     </MenuOption>
   );

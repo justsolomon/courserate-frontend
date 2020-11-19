@@ -1,15 +1,15 @@
 import {
   Button,
   FormControl,
-  FormErrorMessage,
   FormLabel,
-  Icon,
   Input,
   InputGroup,
   InputRightElement,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 import { useState } from 'react';
 import { Field } from 'formik';
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+import ErrorMessage from './ErrorMessage';
 
 function PasswordInput() {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -17,16 +17,16 @@ function PasswordInput() {
   return (
     <Field name='password'>
       {({ field, form }) => (
-        <FormControl
-          mb='4'
-          isInvalid={form.errors.password && form.touched.password}
-        >
-          <FormLabel htmlFor='password'>Password</FormLabel>
+        <FormControl isInvalid={form.errors.password && form.touched.password}>
+          <FormLabel mb='1' htmlFor='password'>
+            Password
+          </FormLabel>
           <InputGroup>
             <Input
               type={passwordVisible ? 'text' : 'password'}
               id='password'
               {...field}
+              borderRadius='base'
             />
             <InputRightElement>
               <Button
@@ -34,11 +34,11 @@ function PasswordInput() {
                 onClick={() => setPasswordVisible(!passwordVisible)}
                 aria-label='Toggle password visibility'
               >
-                <Icon name={!passwordVisible ? 'view' : 'view-off'} />
+                {!passwordVisible ? <ViewIcon /> : <ViewOffIcon />}
               </Button>
             </InputRightElement>
           </InputGroup>
-          <FormErrorMessage>{form.errors.password}</FormErrorMessage>
+          <ErrorMessage error={form.errors.password} />
         </FormControl>
       )}
     </Field>

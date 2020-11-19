@@ -1,4 +1,4 @@
-import { Button, LightMode } from '@chakra-ui/core';
+import { Button, LightMode } from '@chakra-ui/react';
 
 function RegisterButton({ goToRegisterPage }) {
   return (
@@ -8,6 +8,7 @@ function RegisterButton({ goToRegisterPage }) {
         color='white'
         bg='green.400'
         _hover={{ bg: 'green.500' }}
+        borderRadius='base'
       >
         Sign Up
       </Button>

@@ -1,4 +1,4 @@
-import { Box, Stack } from '@chakra-ui/core';
+import { Box, Stack } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import NavLink from './NavLink';
 import RegisterButton from './RegisterButton';
