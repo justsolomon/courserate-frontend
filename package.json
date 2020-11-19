@@ -10,10 +10,11 @@
   },
   "dependencies": {
     "@apollo/client": "^3.2.5",
+    "@chakra-ui/icons": "^1.0.0",
     "@chakra-ui/react": "^1.0.0",
     "@emotion/react": "^11.0.0",
     "@emotion/styled": "^11.0.0",
-    "@chakra-ui/icons": "^1.0.0",
+    "focus-visible": "^5.2.0",
     "formik": "^2.2.3",
     "framer-motion": "^2.9.4",
     "graphql": "^15.4.0",

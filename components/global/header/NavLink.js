@@ -9,6 +9,7 @@ function NavLink({ path, text, login }) {
           textDecoration: 'none',
           color: login && 'green.500',
         }}
+        href={`/${path}`}
       >
         {text}
       </PrimaryLink>

@@ -10,7 +10,9 @@ function ChangeAuth({ login }) {
     <Stack isInline spacing='1' mt='4' justify='center'>
       <Text>{text}</Text>
       <Link href={href}>
-        <PrimaryLink color='blue.500'>{linkText}</PrimaryLink>
+        <PrimaryLink color='blue.500' tabIndex='0' href={href}>
+          {linkText}
+        </PrimaryLink>
       </Link>
     </Stack>
   );
