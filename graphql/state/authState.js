@@ -8,9 +8,9 @@ export const expiryTime = makeVar('');
 export const refreshAction = makeVar();
 
 export const updateAuthState = (data) => {
-  const { username, email, createdAt, jwt } = data;
+  const { username, email, createdAt } = data.user;
   updateStorageStatus(true);
   profile({ username, email, joined: createdAt });
-  accessToken(jwt.token);
-  expiryTime(jwt.expiresIn - new Date().getTime());
+  accessToken(data.jwt.token);
+  expiryTime(data.jwt.expiresIn - new Date().getTime());
 };
