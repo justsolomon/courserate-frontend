@@ -26,13 +26,13 @@ function SignUpContainer() {
 
   const [registerUser] = useMutation(REGISTER_USER, {
     onCompleted(data) {
-      console.log('completed', data);
       formActions.setSubmitting(false);
       setError(false);
       setSuccess(true);
 
       //store data in state
-      updateAuthState(data.register);
+      const { user, jwt } = data.register;
+      updateAuthState(user.username, jwt);
 
       //start countdown to silent refresh
       const startSilentRefresh = refreshAction();
@@ -41,7 +41,6 @@ function SignUpContainer() {
       setTimeout(() => router.push('/'), 1000);
     },
     onError({ message }) {
-      console.log('error', message);
       formActions.setSubmitting(false);
       setSuccess(false);
       setError(true);

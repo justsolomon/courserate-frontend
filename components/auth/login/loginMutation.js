@@ -7,9 +7,11 @@ const LOGIN_USER = gql`
         token
         expiresIn
       }
-      username
-      email
-      createdAt
+      user {
+        username
+        email
+        createdAt
+      }
     }
   }
 `;

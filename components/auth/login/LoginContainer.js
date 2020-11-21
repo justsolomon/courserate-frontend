@@ -30,7 +30,8 @@ function LoginContainer() {
       setSuccess(true);
 
       //store data in state
-      updateAuthState(data.login);
+      const { user, jwt } = data.login;
+      updateAuthState(user.username, jwt);
 
       //start countdown to silent refresh
       const startSilentRefresh = refreshAction();
@@ -39,7 +40,6 @@ function LoginContainer() {
       setTimeout(() => router.push('/'), 1000);
     },
     onError({ message }) {
-      console.log('error', message);
       formActions.setSubmitting(false);
       setSuccess(false);
       setError(true);
