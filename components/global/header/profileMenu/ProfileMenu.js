@@ -1,20 +1,15 @@
 import { useMutation } from '@apollo/client';
-import {
-  Menu,
-  MenuDivider,
-  MenuList,
-  useDisclosure,
-  useToast,
-} from '@chakra-ui/react';
+import { Menu, useDisclosure, useToast } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import {
   accessToken,
   updateStorageStatus,
-} from '../../../graphql/state/authState';
-import LogoutModal from '../../auth/logout/LogoutModal';
-import LOGOUT_USER from './logoutMutation';
-import MenuItem from './MenuItem';
+} from '../../../../graphql/state/authState';
+import LogoutModal from '../../../auth/logout/LogoutModal';
+import LOGOUT_USER from '../../../auth/logout/logoutMutation';
 import ProfileMenuButton from './ProfileMenuButton';
+import { errorToast, successToast } from '../../../auth/logout/logoutStatus';
+import ProfileMenuList from './ProfileMenuList';
 
 function ProfileMenu() {
   const router = useRouter();
@@ -22,20 +17,15 @@ function ProfileMenu() {
   const toast = useToast();
 
   const [logout, { loading }] = useMutation(LOGOUT_USER, {
-    onCompleted(data) {
+    onCompleted() {
       updateStorageStatus(false);
       accessToken('');
-      toast({
-        position: 'bottom-left',
-        description: 'Logged out successfully',
-        status: 'success',
-        duration: 2000,
-        isClosable: true,
-      });
+      toast(successToast);
       router.push('/');
     },
     onError({ message }) {
       console.log('logout error', message);
+      toast({ ...errorToast, description: message });
     },
   });
 
@@ -43,12 +33,7 @@ function ProfileMenu() {
     <>
       <Menu closeOnBlur={true}>
         <ProfileMenuButton />
-        <MenuList borderRadius='base'>
-          <MenuItem text='View Profile' />
-          <MenuItem text='Add Course' />
-          <MenuDivider />
-          <MenuItem clickAction={onOpen} text='Logout' />
-        </MenuList>
+        <ProfileMenuList openModal={onOpen} />
       </Menu>
       <LogoutModal
         open={isOpen}
