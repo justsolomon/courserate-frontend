@@ -16,7 +16,7 @@ function LogoutModal({ open, closeModal, loading, logout }) {
         <ModalHeader>Log out of CourseRate?</ModalHeader>
         <ModalBody>You can always log back in at any time.</ModalBody>
         <ModalFooter>
-          <Button bgColor='grey.500' onClick={closeModal} mr='4'>
+          <Button onClick={closeModal} mr='4'>
             Cancel
           </Button>
           <Button colorScheme='green' onClick={logout} isLoading={loading}>
