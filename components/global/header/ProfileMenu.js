@@ -9,8 +9,10 @@ import {
   MenuList,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { accessToken, profile } from '../../../graphql/state/authState';
-import { updateStorageStatus } from '../../auth/actions/authActions';
+import {
+  accessToken,
+  updateStorageStatus,
+} from '../../../graphql/state/authState';
 import LOGOUT_USER from './logoutMutation';
 import MenuItem from './MenuItem';
 
@@ -19,7 +21,8 @@ function ProfileMenu() {
 
   const [logout] = useMutation(LOGOUT_USER, {
     onCompleted(data) {
-      console.log('logout', data);
+      updateStorageStatus(false);
+      accessToken('');
       router.push('/');
     },
     onError({ message }) {
@@ -27,9 +30,6 @@ function ProfileMenu() {
     },
   });
 
-  const { username } = profile();
-
-  console.log(profile());
   return (
     <Menu closeOnBlur={true}>
       <MenuButton
@@ -46,20 +46,13 @@ function ProfileMenu() {
         _focus={{ outline: '0' }}
         rightIcon={<ChevronDownIcon />}
       >
-        <Box as='span'>{username}</Box>
+        <Box as='span'>{localStorage['username']}</Box>
       </MenuButton>
       <MenuList borderRadius='base'>
         <MenuItem text='View Profile' />
         <MenuItem text='Add Course' />
         <MenuDivider />
-        <MenuItem
-          clickAction={() => {
-            logout();
-            updateStorageStatus(false);
-            accessToken('');
-          }}
-          text='Logout'
-        />
+        <MenuItem clickAction={logout} text='Logout' />
       </MenuList>
     </Menu>
   );
