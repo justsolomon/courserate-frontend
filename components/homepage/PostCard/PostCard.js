@@ -1,5 +1,5 @@
 import { Box, Text, HStack } from '@chakra-ui/react';
-import PostTagList from '../postTag/PostTagList';
+import PostTagList from '../PostTag/PostTagList';
 import PostCreator from './PostCreator';
 import UpvoteButton from './UpvoteButton';
 import ReviewsButton from './ReviewsButton';
