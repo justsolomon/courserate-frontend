@@ -8,7 +8,6 @@ function PostCardList() {
   const [courses, setCourses] = useState([]);
   const { loading } = useQuery(FETCH_COURSES, {
     onCompleted(data) {
-      console.log(data);
       setCourses(data.courses);
     },
     onError({ message }) {

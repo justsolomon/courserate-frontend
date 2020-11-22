@@ -7,11 +7,9 @@ export const expiryTime = makeVar('');
 export const refreshAction = makeVar();
 
 export const updateStorageStatus = (value, username = '') => {
-  console.log(value);
   localStorage['loggedIn'] = value;
   localStorage['username'] = username;
   loggedIn(value);
-  console.log(loggedIn);
 };
 
 export const updateAuthState = (username, jwt) => {

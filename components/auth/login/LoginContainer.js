@@ -24,7 +24,6 @@ function LoginContainer() {
 
   const [loginUser] = useMutation(LOGIN_USER, {
     onCompleted(data) {
-      console.log('completed', data);
       formActions.setSubmitting(false);
       setError(false);
       setSuccess(true);
@@ -52,7 +51,6 @@ function LoginContainer() {
       initialValues={values}
       onSubmit={(values, actions) => {
         setFormActions(actions);
-        console.log(values);
         loginUser({ variables: values });
       }}
       validationSchema={loginValidation}

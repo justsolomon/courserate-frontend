@@ -13,6 +13,7 @@ function LayoutContainer({ children }) {
   const [refreshToken] = useMutation(REFRESH_TOKEN, {
     onCompleted(data) {
       console.log('updating jwt');
+      startSilentRefresh(true);
       updateJWT(data.refreshToken);
     },
     onError({ message }) {
@@ -27,6 +28,7 @@ function LayoutContainer({ children }) {
       if (expiryTime()) {
         console.log(expiryTime(), 'countdown started');
         setTimeout(() => {
+          console.log('refreshing jwt silently (my 15mins are up I guess)');
           refreshToken();
         }, expiryTime());
       } else refreshToken();
