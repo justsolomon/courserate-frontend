@@ -3,7 +3,7 @@ import AppName from './AppName';
 import ToggleThemeButton from './ToggleThemeButton';
 import AuthRoutes from './AuthRoutes';
 import { loggedIn } from '../../../graphql/state/authState';
-import ProfileMenu from './ProfileMenu';
+import ProfileMenu from './profileMenu/ProfileMenu';
 
 function Header() {
   const { colorMode, toggleColorMode } = useColorMode();

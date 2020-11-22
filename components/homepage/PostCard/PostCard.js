@@ -1,17 +1,6 @@
-import {
-  Box,
-  Text,
-  Link as PrimaryLink,
-  HStack,
-  Stack,
-  IconButton,
-  Button,
-} from '@chakra-ui/react';
+import { Box, Text, HStack } from '@chakra-ui/react';
 import PostTagList from '../PostTag/PostTagList';
-import Link from 'next/link';
-import { ChatIcon, TriangleUpIcon } from '@chakra-ui/icons';
-import FormattedTime from './FormattedTime';
-import PostUser from './PostUser';
+import PostCreator from './PostCreator';
 import UpvoteButton from './UpvoteButton';
 import ReviewsButton from './ReviewsButton';
 
@@ -33,7 +22,7 @@ function PostCard({
       _hover={{ borderColor: 'gray.600' }}
       tabIndex='0'
     >
-      <PostUser createdAt={createdAt} username={username} />
+      <PostCreator createdAt={createdAt} username={username} />
       <Text fontSize='lg' fontWeight='bold'>
         {title}
       </Text>

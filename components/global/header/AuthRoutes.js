@@ -8,7 +8,7 @@ function AuthRoutes() {
 
   return (
     <Stack isInline align='center' spacing='4'>
-      <Box fontWeight='bold' color='grey.500'>
+      <Box fontWeight='bold'>
         <NavLink path='login' text='Login' login />
       </Box>
       <RegisterButton goToRegisterPage={() => router.push('/signup')} />
