@@ -1,8 +1,10 @@
 import { Box, Text, HStack } from '@chakra-ui/react';
 import PostTagList from '../PostTag/PostTagList';
 import PostCreator from './PostCreator';
-import UpvoteButton from './UpvoteButton';
+import VoteButton from './vote/VoteButton';
 import ReviewsButton from './ReviewsButton';
+import ShareButton from './ShareButton';
+import { useState } from 'react';
 
 function PostCard({
   username,
@@ -11,7 +13,10 @@ function PostCard({
   voteCount,
   reviewCount,
   createdAt,
+  id,
+  votes,
 }) {
+  const [votesNum, setVotesNum] = useState(voteCount);
   return (
     <Box
       borderWidth='1px'
@@ -27,9 +32,15 @@ function PostCard({
         {title}
       </Text>
       <PostTagList skills={skills} />
-      <HStack mt='2' spacing='3'>
-        <UpvoteButton voteCount={voteCount} />
+      <HStack mt='2' spacing='0'>
+        <VoteButton
+          voteCount={votesNum}
+          courseId={id}
+          updateCount={setVotesNum}
+          voters={votes.map((user) => user.username)}
+        />
         <ReviewsButton reviewCount={reviewCount} />
+        <ShareButton />
       </HStack>
     </Box>
   );

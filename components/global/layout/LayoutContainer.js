@@ -12,6 +12,7 @@ import Layout from './Layout';
 function LayoutContainer({ children }) {
   const [refreshToken] = useMutation(REFRESH_TOKEN, {
     onCompleted(data) {
+      console.log('updating jwt');
       updateJWT(data.refreshToken);
     },
     onError({ message }) {
@@ -24,6 +25,7 @@ function LayoutContainer({ children }) {
     if (loggedIn) {
       //start countdown to silent refresh after login/signup
       if (expiryTime()) {
+        console.log(expiryTime(), 'countdown started');
         setTimeout(() => {
           refreshToken();
         }, expiryTime());

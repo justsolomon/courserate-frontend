@@ -35,7 +35,7 @@ function LoginContainer() {
 
       //start countdown to silent refresh
       const startSilentRefresh = refreshAction();
-      startSilentRefresh();
+      startSilentRefresh(true);
 
       setTimeout(() => router.push('/'), 1000);
     },

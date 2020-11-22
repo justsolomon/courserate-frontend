@@ -22,6 +22,7 @@ function ProfileMenu() {
       accessToken('');
       toast(successToast);
       router.push('/');
+      router.reload();
     },
     onError({ message }) {
       console.log('logout error', message);
