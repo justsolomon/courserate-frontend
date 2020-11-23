@@ -5,6 +5,7 @@ import {
   expiryTime,
   refreshAction,
   updateJWT,
+  updateStorageStatus,
 } from '../../../graphql/state/authState';
 import REFRESH_TOKEN from './refreshMutation';
 import Layout from './Layout';
@@ -18,7 +19,7 @@ function LayoutContainer({ children }) {
     },
     onError({ message }) {
       console.log('refresh error', message);
-      updateStorageStatus(false);
+      if (message === 'Refresh token has expired.') updateStorageStatus(false);
     },
   });
 

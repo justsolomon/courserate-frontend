@@ -21,11 +21,10 @@ function ProfileMenu() {
       updateStorageStatus(false);
       accessToken('');
       toast(successToast);
-      router.push('/');
-      router.reload();
+      if (router.pathname === '/') router.reload();
+      else router.push('/');
     },
     onError({ message }) {
-      console.log('logout error', message);
       toast({ ...errorToast, description: message });
     },
   });
