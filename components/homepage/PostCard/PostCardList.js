@@ -1,11 +1,11 @@
 import { useQuery } from '@apollo/client';
-import { Spinner, VStack } from '@chakra-ui/react';
+import { Skeleton, VStack } from '@chakra-ui/react';
 import { useState } from 'react';
 import FETCH_COURSES from './coursesQuery';
 import PostCard from './PostCard';
 
 function PostCardList() {
-  const [courses, setCourses] = useState([]);
+  const [courses, setCourses] = useState(new Array(4));
   const { loading } = useQuery(FETCH_COURSES, {
     onCompleted(data) {
       setCourses(data.courses);
@@ -17,11 +17,11 @@ function PostCardList() {
 
   return (
     <VStack>
-      {loading ? (
-        <Spinner />
-      ) : (
-        courses.map((course, index) => <PostCard key={index} {...course} />)
-      )}
+      {courses.map((course, index) => (
+        <Skeleton isLoaded={!loading} h='140px' w='100%'>
+          <PostCard key={index} {...course} />
+        </Skeleton>
+      ))}
     </VStack>
   );
 }

@@ -24,6 +24,7 @@ function PostCard({
       py='2'
       cursor='pointer'
       borderRadius='md'
+      w='100%'
       _hover={{ borderColor: 'gray.600' }}
       tabIndex='0'
     >
@@ -32,7 +33,7 @@ function PostCard({
         {title}
       </Text>
       <PostTagList skills={skills} />
-      <HStack mt='2' spacing='0'>
+      <HStack spacing='0'>
         <VoteButton
           voteCount={votesNum}
           courseId={id}
