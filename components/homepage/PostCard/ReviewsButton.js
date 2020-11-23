@@ -10,6 +10,7 @@ function ReviewsButton({ reviewCount }) {
       spacing='2'
       align='center'
       justify='center'
+      px='2'
     >
       <ChatIcon boxSize='14px' color='gray.600' />
       <Text fontSize='sm' color='gray.600'>

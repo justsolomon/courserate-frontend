@@ -13,8 +13,6 @@ export const signupValidation = Yup.object({
     .oneOf([Yup.ref('password'), null], 'Passwords must match'),
 });
 
-console.log(Yup.ref('password'));
-
 export const loginValidation = Yup.object({
   ...validationObject,
 });

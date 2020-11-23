@@ -1,7 +1,7 @@
 import { useMutation } from '@apollo/client';
 import { Formik } from 'formik';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   refreshAction,
   updateAuthState,
@@ -9,6 +9,7 @@ import {
 import { loginValidation } from '../form/validationSchema';
 import LOGIN_USER from './loginMutation';
 import LoginForm from './LoginForm';
+import redirectUser from '../form/redirect';
 
 const values = {
   email: '',
@@ -24,7 +25,6 @@ function LoginContainer() {
 
   const [loginUser] = useMutation(LOGIN_USER, {
     onCompleted(data) {
-      console.log('completed', data);
       formActions.setSubmitting(false);
       setError(false);
       setSuccess(true);
@@ -35,7 +35,7 @@ function LoginContainer() {
 
       //start countdown to silent refresh
       const startSilentRefresh = refreshAction();
-      startSilentRefresh();
+      startSilentRefresh(true);
 
       setTimeout(() => router.push('/'), 1000);
     },
@@ -47,12 +47,16 @@ function LoginContainer() {
     },
   });
 
+  useEffect(() => {
+    //redirect user to profile page if logged in
+    redirectUser(router);
+  }, []);
+
   return (
     <Formik
       initialValues={values}
       onSubmit={(values, actions) => {
         setFormActions(actions);
-        console.log(values);
         loginUser({ variables: values });
       }}
       validationSchema={loginValidation}

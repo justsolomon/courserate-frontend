@@ -3,12 +3,13 @@ import { Formik } from 'formik';
 import { signupValidation } from '../form/validationSchema';
 import SignUpForm from './SignUpForm';
 import REGISTER_USER from './signupMutation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import {
   refreshAction,
   updateAuthState,
 } from '../../../graphql/state/authState';
+import redirectUser from '../form/redirect';
 
 const values = {
   username: '',
@@ -47,6 +48,11 @@ function SignUpContainer() {
       setErrorMsg(message);
     },
   });
+
+  useEffect(() => {
+    //redirect user to profile page if logged in
+    redirectUser(router);
+  }, []);
 
   return (
     <Formik
