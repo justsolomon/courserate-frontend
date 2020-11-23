@@ -1,7 +1,7 @@
 import { useMutation } from '@apollo/client';
 import { Formik } from 'formik';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   refreshAction,
   updateAuthState,
@@ -9,6 +9,7 @@ import {
 import { loginValidation } from '../form/validationSchema';
 import LOGIN_USER from './loginMutation';
 import LoginForm from './LoginForm';
+import redirectUser from '../form/redirect';
 
 const values = {
   email: '',
@@ -45,6 +46,11 @@ function LoginContainer() {
       setErrorMsg(message);
     },
   });
+
+  useEffect(() => {
+    //redirect user to profile page if logged in
+    redirectUser(router);
+  }, []);
 
   return (
     <Formik
