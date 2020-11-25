@@ -23,9 +23,9 @@ function PostCard({
       px='4'
       py='2'
       cursor='pointer'
-      borderRadius='md'
+      borderRadius={['none', 'md']}
       w='100%'
-      _hover={{ borderColor: 'gray.600' }}
+      _hover={{ borderColor: ['none', 'gray.600'] }}
       tabIndex='0'
     >
       <PostCreator createdAt={createdAt} username={username} />

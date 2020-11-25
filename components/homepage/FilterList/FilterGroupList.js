@@ -4,7 +4,13 @@ import filterGroups from './filterGroups';
 
 function FilterGroupList() {
   return (
-    <VStack spacing='4' mt='10' position='sticky' top='127px'>
+    <VStack
+      spacing='4'
+      mt='10'
+      position='sticky'
+      top='127px'
+      d={['none', , 'flex']}
+    >
       {filterGroups.map((filterGroup, index) => (
         <FilterGroup {...filterGroup} key={index} />
       ))}

@@ -5,6 +5,7 @@ import AuthRoutes from './AuthRoutes';
 import { loggedIn } from '../../../graphql/state/authState';
 import ProfileMenu from './ProfileMenu/ProfileMenu';
 import SearchBar from './SearchBar/SearchBar';
+import MobileNav from './MobileNav';
 
 function Header() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -16,12 +17,11 @@ function Header() {
   return (
     <Stack
       isInline
-      px='8'
+      px={['4', '6', '8']}
       height='55px'
       borderBottom='1px'
       borderBottomColor={borderColor[colorMode]}
       justify='space-between'
-      boxShadow='base'
       position='sticky'
       top='0px'
       align='center'
@@ -29,7 +29,14 @@ function Header() {
       bg={bgColor[colorMode]}
     >
       <AppName />
-      <Stack isInline spacing='1' align='center'>
+      <MobileNav
+        colorMode={colorMode}
+        switchTheme={toggleColorMode}
+        loggedIn={userLoggedIn}
+      />
+
+      {/* desktop nav */}
+      <Stack isInline spacing='1' align='center' d={['none', , 'flex']}>
         <SearchBar />
         <Box>
           <ToggleThemeButton
