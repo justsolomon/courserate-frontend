@@ -1,13 +1,13 @@
 import Link from 'next/link';
 import { Link as PrimaryLink } from '@chakra-ui/react';
 
-function NavLink({ path, text, hoverable }) {
+function NavLink({ path, text, login }) {
   return (
     <Link href={`/${path}`}>
       <PrimaryLink
         _hover={{
           textDecoration: 'none',
-          color: hoverable && 'green.500',
+          color: login && 'green.500',
         }}
         href={`/${path}`}
       >

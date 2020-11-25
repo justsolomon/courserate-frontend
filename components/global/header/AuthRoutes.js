@@ -1,27 +1,17 @@
 import { Box, Stack } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import NavLink from './NavLink';
-import AuthButton from './AuthButton';
+import RegisterButton from './RegisterButton';
 
 function AuthRoutes() {
   const router = useRouter();
 
   return (
-    <Stack
-      align='center'
-      spacing={['2', '0', '4']}
-      justify='space-between'
-      mt={['2', '4', '0']}
-      direction={['column', 'row', 'row']}
-    >
-      <Box fontWeight='bold' d={['none', , 'block']}>
-        <NavLink path='login' text='Login' hoverable />
+    <Stack isInline align='center' spacing='4'>
+      <Box fontWeight='bold'>
+        <NavLink path='login' text='Login' login />
       </Box>
-      <AuthButton goToAuthPage={() => router.push('/login')} authText='Login' />
-      <AuthButton
-        goToAuthPage={() => router.push('/signup')}
-        authText='Sign Up'
-      />
+      <RegisterButton goToRegisterPage={() => router.push('/signup')} />
     </Stack>
   );
 }

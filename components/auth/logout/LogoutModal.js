@@ -12,8 +12,7 @@ function LogoutModal({ open, closeModal, loading, logout }) {
   return (
     <Modal isOpen={open} onClose={closeModal} size='sm' isCentered>
       <ModalOverlay />
-
-      <ModalContent textAlign='center' mx={['4', '0']}>
+      <ModalContent textAlign='center'>
         <ModalHeader>Log out of CourseRate?</ModalHeader>
         <ModalBody>You can always log back in at any time.</ModalBody>
         <ModalFooter>
