@@ -4,6 +4,11 @@ import ToggleThemeButton from './ToggleThemeButton';
 import AuthRoutes from './AuthRoutes';
 import { loggedIn } from '../../../graphql/state/authState';
 import ProfileMenu from './profileMenu/ProfileMenu';
+<<<<<<< HEAD
+=======
+import SearchBar from './SearchBar/SearchBar';
+import MobileNav from './MobileNav';
+>>>>>>> feat/homepage
 
 function Header() {
   const { colorMode, toggleColorMode } = useColorMode();
