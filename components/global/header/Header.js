@@ -3,7 +3,7 @@ import AppName from './AppName';
 import ToggleThemeButton from './ToggleThemeButton';
 import AuthRoutes from './AuthRoutes';
 import { loggedIn } from '../../../graphql/state/authState';
-import ProfileMenu from './profileMenu/ProfileMenu';
+import ProfileMenu from './profile/ProfileMenu';
 import SearchBar from './SearchBar/SearchBar';
 import MobileNav from './MobileNav';
 
