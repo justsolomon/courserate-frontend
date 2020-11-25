@@ -7,7 +7,7 @@ function ProfileMenuButton() {
       as={Button}
       variant='ghost'
       rounded='base'
-      width='150px'
+      width='200px'
       height='40px'
       d='flex'
       justifyContent='space-between'

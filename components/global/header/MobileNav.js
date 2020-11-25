@@ -14,7 +14,7 @@ import React from 'react';
 import { FaBars } from 'react-icons/fa';
 import AppName from './AppName';
 import AuthRoutes from './AuthRoutes';
-import ProfileMenu from './profileMenu/ProfileMenu';
+import ProfileMenu from './ProfileMenu/ProfileMenu';
 import SearchBar from './SearchBar/SearchBar';
 import ToggleThemeButton from './ToggleThemeButton';
 
