@@ -3,41 +3,27 @@ import AppName from './AppName';
 import ToggleThemeButton from './ToggleThemeButton';
 import AuthRoutes from './AuthRoutes';
 import { loggedIn } from '../../../graphql/state/authState';
-import ProfileMenu from './profile/ProfileMenu';
-import SearchBar from './SearchBar/SearchBar';
-import MobileNav from './MobileNav';
+import ProfileMenu from './profileMenu/ProfileMenu';
 
 function Header() {
   const { colorMode, toggleColorMode } = useColorMode();
   const borderColor = { light: 'gray.200', dark: 'gray.600' };
-  const bgColor = { light: 'white', dark: '#1A202C' };
-
   const userLoggedIn = loggedIn();
 
   return (
     <Stack
       isInline
-      px={['4', '6', '8']}
+      px='8'
       height='55px'
       borderBottom='1px'
       borderBottomColor={borderColor[colorMode]}
       justify='space-between'
+      boxShadow='base'
       position='sticky'
-      top='0px'
       align='center'
-      zIndex='2'
-      bg={bgColor[colorMode]}
     >
       <AppName />
-      <MobileNav
-        colorMode={colorMode}
-        switchTheme={toggleColorMode}
-        loggedIn={userLoggedIn}
-      />
-
-      {/* desktop nav */}
-      <Stack isInline spacing='1' align='center' d={['none', , 'flex']}>
-        <SearchBar />
+      <Stack isInline spacing='1' align='center'>
         <Box>
           <ToggleThemeButton
             colorMode={colorMode}

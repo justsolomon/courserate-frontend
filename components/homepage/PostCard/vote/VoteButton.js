@@ -22,10 +22,7 @@ function VoteButton({ voteCount, courseId, updateCount, voters }) {
       updateCount(newVoteCount);
     },
     onError({ message }) {
-      let errMessage = message;
-      if (message === 'Refresh token has expired.')
-        errMessage = 'You have to be logged in.';
-      toast({ ...errorToast, description: errMessage });
+      toast({ ...errorToast, description: message });
     },
   });
 

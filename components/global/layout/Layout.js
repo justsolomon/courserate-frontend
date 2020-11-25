@@ -5,7 +5,7 @@ function Layout({ children }) {
   return (
     <>
       <Header />
-      <Box p={['0', '6', '8']}>{children}</Box>
+      <Box p='8'>{children}</Box>
     </>
   );
 }
