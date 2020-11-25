@@ -3,9 +3,9 @@ import PostTag from './PostTag';
 
 function PostTagList({ skills }) {
   return (
-    <HStack mt='3'>
+    <HStack mt='3' wrap='wrap' spacing='0'>
       {skills.map((skill, index) => {
-        if (index < 5) return <PostTag title={skill} key={index} />;
+        if (index < 10) return <PostTag title={skill} key={index} />;
       })}
     </HStack>
   );
