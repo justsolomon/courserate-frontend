@@ -18,7 +18,6 @@ function ProfileMenu() {
 
   const [logout, { loading }] = useMutation(LOGOUT_USER, {
     onCompleted() {
-      console.log('fixing file name error during deploy');
       updateStorageStatus(false);
       accessToken('');
       toast(successToast);

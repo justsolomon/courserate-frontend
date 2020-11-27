@@ -24,7 +24,7 @@ function MobileFilterMenu() {
       >
         Filter By
       </MenuButton>
-      <MenuList borderRadius='base' w='60vw'>
+      <MenuList borderRadius='base'>
         {filterGroups.map(({ groupTitle, filters }, index) => (
           <MenuGroup title={groupTitle} key={index}>
             {filters.map((filter, index) => (
