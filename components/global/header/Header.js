@@ -29,6 +29,8 @@ function Header() {
       bg={bgColor[colorMode]}
     >
       <AppName />
+
+      {/* mobile nav */}
       <MobileNav
         colorMode={colorMode}
         switchTheme={toggleColorMode}

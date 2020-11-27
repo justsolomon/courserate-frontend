@@ -42,7 +42,11 @@ function MobileNav(props) {
                 <DrawerCloseButton mr={['4', '6']} w='0' size='lg' />
               </HStack>
               <SearchBar />
-              {props.loggedIn ? <ProfileMenu /> : <AuthRoutes />}
+              {props.loggedIn ? (
+                <ProfileMenu closeDrawer={onClose} />
+              ) : (
+                <AuthRoutes />
+              )}
             </DrawerBody>
           </DrawerContent>
         </DrawerOverlay>
