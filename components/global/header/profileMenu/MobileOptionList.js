@@ -6,7 +6,7 @@ import MobileOption from './MobileOption';
 function MobileOptionList({ openModal, closeDrawer }) {
   const router = useRouter();
   return (
-    <VStack align='flex-start' spacing='4' mt='4'>
+    <VStack align='flex-start' spacing='4' mt='4' d={['flex', , 'none']}>
       <MobileOption
         clickAction={() => {
           router.push(`/user/${localStorage['username']}`);
