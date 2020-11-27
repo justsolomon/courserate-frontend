@@ -1,5 +1,5 @@
 import { useMutation } from '@apollo/client';
-import { Menu, useDisclosure, useToast } from '@chakra-ui/react';
+import { Box, Menu, useDisclosure, useToast } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import {
   accessToken,
@@ -10,8 +10,9 @@ import LOGOUT_USER from '../../../auth/logout/logoutMutation';
 import ProfileMenuButton from './ProfileMenuButton';
 import { errorToast, successToast } from '../../../auth/logout/logoutStatus';
 import ProfileMenuList from './ProfileMenuList';
+import MobileOptionList from './MobileOptionList';
 
-function ProfileMenu() {
+function ProfileMenu({ closeDrawer }) {
   const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
@@ -31,10 +32,16 @@ function ProfileMenu() {
 
   return (
     <>
-      <Menu closeOnBlur={true}>
-        <ProfileMenuButton />
-        <ProfileMenuList openModal={onOpen} />
-      </Menu>
+      <Box d={['none', , 'block']}>
+        <Menu closeOnBlur={true}>
+          <ProfileMenuButton />
+          <ProfileMenuList openModal={onOpen} />
+        </Menu>
+      </Box>
+
+      {/* mobile nav options */}
+      <MobileOptionList openModal={onOpen} closeDrawer={closeDrawer} />
+
       <LogoutModal
         open={isOpen}
         closeModal={onClose}
