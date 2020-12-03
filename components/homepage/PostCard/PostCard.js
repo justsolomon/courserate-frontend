@@ -3,8 +3,8 @@ import PostTagList from '../PostTag/PostTagList';
 import PostCreator from './PostCreator';
 import VoteButton from './vote/VoteButton';
 import ReviewsButton from './ReviewsButton';
-import ShareButton from './ShareButton';
 import { useState } from 'react';
+import ShareMenu from './share/ShareMenu';
 
 function PostCard({
   username,
@@ -41,7 +41,10 @@ function PostCard({
           voters={votes.map((user) => user.username)}
         />
         <ReviewsButton reviewCount={reviewCount} />
-        <ShareButton />
+        <ShareMenu
+          link={`https://courserate.netlify.app/post/${id}`}
+          title={title}
+        />
       </HStack>
     </Box>
   );
