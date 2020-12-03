@@ -1,9 +1,10 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import NextNProgress from 'nextjs-progressbar';
-import 'focus-visible/dist/focus-visible';
 import { loggedIn } from '../graphql/state/authState';
 import { useEffect } from 'react';
 import withApollo from '../lib/withApollo';
+import 'focus-visible/dist/focus-visible';
+import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
