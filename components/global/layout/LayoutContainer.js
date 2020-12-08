@@ -4,11 +4,13 @@ import {
   accessToken,
   expiryTime,
   refreshAction,
-  updateJWT,
-  updateStorageStatus,
-} from '../../../graphql/state/authState';
+} from '../../../graphql/state/auth/authState';
 import REFRESH_TOKEN from './refreshMutation';
 import Layout from './Layout';
+import {
+  updateJWT,
+  updateStorageStatus,
+} from '../../../graphql/state/auth/authActions';
 
 function LayoutContainer({ children }) {
   const [refreshToken] = useMutation(REFRESH_TOKEN, {

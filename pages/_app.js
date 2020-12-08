@@ -1,6 +1,6 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import NextNProgress from 'nextjs-progressbar';
-import { loggedIn } from '../graphql/state/authState';
+import { loggedIn, username } from '../graphql/state/auth/authState';
 import { useEffect } from 'react';
 import withApollo from '../lib/withApollo';
 import 'focus-visible/dist/focus-visible';
@@ -10,7 +10,10 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     //store loggedIn status in state
     let userLoggedIn = localStorage['loggedIn'];
-    if (userLoggedIn) userLoggedIn = JSON.parse(userLoggedIn);
+    if (userLoggedIn) {
+      userLoggedIn = JSON.parse(userLoggedIn);
+      username(localStorage['username']);
+    }
     loggedIn(userLoggedIn);
   }, []);
 

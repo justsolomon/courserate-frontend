@@ -1,4 +1,4 @@
-import { Tooltip } from '@chakra-ui/react';
+import { Box, Text, Tooltip } from '@chakra-ui/react';
 import TimeAgo from 'timeago-react';
 import * as timeago from 'timeago.js';
 import Locale from './CustomLocale';
@@ -17,7 +17,12 @@ function FormattedTime({ createdAt }) {
       borderRadius='base'
       fontSize='sm'
     >
-      <TimeAgo datetime={createdAt} locale='myLocale' />
+      <Text
+        as={TimeAgo}
+        datetime={createdAt}
+        locale='myLocale'
+        color='gray.500'
+      />
     </Tooltip>
   );
 }

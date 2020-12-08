@@ -6,8 +6,6 @@ import UserProfile from '../../components/userProfile/UserProfile';
 function Profile() {
   const router = useRouter();
   const { username } = router.query;
-  console.log(username);
-  console.log(router.query);
 
   return (
     <LayoutContainer>

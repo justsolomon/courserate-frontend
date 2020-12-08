@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import { Link as PrimaryLink } from '@chakra-ui/react';
+import { Link as ChakraLink } from '@chakra-ui/react';
 
 function NavLink({ path, text, hoverable }) {
   return (
     <Link href={`/${path}`}>
-      <PrimaryLink
+      <ChakraLink
         _hover={{
           textDecoration: 'none',
           color: hoverable && 'green.500',
@@ -12,7 +12,7 @@ function NavLink({ path, text, hoverable }) {
         href={`/${path}`}
       >
         {text}
-      </PrimaryLink>
+      </ChakraLink>
     </Link>
   );
 }

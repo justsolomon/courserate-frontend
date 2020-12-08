@@ -1,4 +1,4 @@
-import { Text, Link as PrimaryLink } from '@chakra-ui/react';
+import { Text, Link as ChakraLink } from '@chakra-ui/react';
 import Link from 'next/link';
 import FormattedTime from './FormattedTime';
 
@@ -7,7 +7,12 @@ function PostCreator({ username, createdAt }) {
     <Text color='gray.500' fontSize='sm'>
       Posted by{' '}
       <Link href={`/user/${username}`}>
-        <PrimaryLink href={`/user/${username}`}>{username}</PrimaryLink>
+        <ChakraLink
+          href={`/user/${username}`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {username}
+        </ChakraLink>
       </Link>{' '}
       <FormattedTime createdAt={createdAt} />
     </Text>

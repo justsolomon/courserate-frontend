@@ -1,16 +1,14 @@
 import { useMutation } from '@apollo/client';
 import { Box, Menu, useDisclosure, useToast } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import {
-  accessToken,
-  updateStorageStatus,
-} from '../../../../graphql/state/authState';
+import { accessToken } from '../../../../graphql/state/auth/authState';
 import LogoutModal from '../../../auth/logout/LogoutModal';
 import LOGOUT_USER from '../../../auth/logout/logoutMutation';
 import ProfileMenuButton from './ProfileMenuButton';
 import { errorToast, successToast } from '../../../auth/logout/logoutStatus';
 import ProfileMenuList from './ProfileMenuList';
 import MobileOptionList from './MobileOptionList';
+import { updateStorageStatus } from '../../../../graphql/state/auth/authActions';
 
 function ProfileMenu({ closeDrawer }) {
   const router = useRouter();

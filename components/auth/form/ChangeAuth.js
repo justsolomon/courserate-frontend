@@ -1,6 +1,6 @@
 import { Stack, Text } from '@chakra-ui/react';
 import Link from 'next/link';
-import { Link as PrimaryLink } from '@chakra-ui/react';
+import { Link as ChakraLink } from '@chakra-ui/react';
 
 function ChangeAuth({ login }) {
   const text = login ? `Don't have an account?` : `Already have an account?`;
@@ -10,9 +10,9 @@ function ChangeAuth({ login }) {
     <Stack isInline spacing='1' mt='4' justify='center'>
       <Text>{text}</Text>
       <Link href={href}>
-        <PrimaryLink color='blue.500' href={href}>
+        <ChakraLink color='blue.500' href={href}>
           {linkText}
-        </PrimaryLink>
+        </ChakraLink>
       </Link>
     </Stack>
   );

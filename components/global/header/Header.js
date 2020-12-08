@@ -2,7 +2,7 @@ import { Box, Stack, useColorMode } from '@chakra-ui/react';
 import AppName from './AppName';
 import ToggleThemeButton from './ToggleThemeButton';
 import AuthRoutes from './AuthRoutes';
-import { loggedIn } from '../../../graphql/state/authState';
+import { loggedIn } from '../../../graphql/state/auth/authState';
 import ProfileMenu from './profileMenu/ProfileMenu';
 import SearchBar from './SearchBar/SearchBar';
 import MobileNav from './MobileNav';
