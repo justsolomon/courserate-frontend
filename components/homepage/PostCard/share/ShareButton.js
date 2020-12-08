@@ -8,11 +8,10 @@ function ShareButton() {
       size='sm'
       variant='ghost'
       spacing='2'
-      align='center'
-      justify='center'
       px='2'
       py='0'
       leftIcon={<Icon as={FaShare} boxSize='14px' color='gray.600' />}
+      onClick={(e) => e.stopPropagation()}
     >
       <Text fontSize='sm' color='gray.600'>
         Share

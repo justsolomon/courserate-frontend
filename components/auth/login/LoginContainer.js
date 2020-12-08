@@ -2,14 +2,12 @@ import { useMutation } from '@apollo/client';
 import { Formik } from 'formik';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import {
-  refreshAction,
-  updateAuthState,
-} from '../../../graphql/state/authState';
+import { refreshAction } from '../../../graphql/state/auth/authState';
 import { loginValidation } from '../form/validationSchema';
 import LOGIN_USER from './loginMutation';
 import LoginForm from './LoginForm';
 import redirectUser from '../form/redirect';
+import { updateAuthState } from '../../../graphql/state/auth/authActions';
 
 const values = {
   email: '',

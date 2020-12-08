@@ -1,14 +1,21 @@
 import { useMutation } from '@apollo/client';
 import { TriangleUpIcon } from '@chakra-ui/icons';
 import { HStack, IconButton, Text, useToast } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { username } from '../../../../graphql/state/auth/authState';
 import { errorToast } from '../../../auth/logout/logoutStatus';
 import VOTE_COURSE from './voteMutation';
 
 function VoteButton({ voteCount, courseId, updateCount, voters }) {
-  //check if logged in user already voted the course
-  const alreadyVoted = voters.includes(localStorage['username']);
-  const [vote, setVote] = useState(alreadyVoted);
+  const [vote, setVote] = useState(false);
+  const [newVoters, setNewVoters] = useState(voters);
+
+  useEffect(() => {
+    if (voters.length && !newVoters.length) setNewVoters(voters);
+    if (newVoters.length) {
+      setVote(newVoters.includes(username()));
+    }
+  }, [newVoters, voters]);
 
   const toast = useToast();
 
@@ -20,6 +27,10 @@ function VoteButton({ voteCount, courseId, updateCount, voters }) {
       else setVote(false);
 
       updateCount(newVoteCount);
+
+      //update voters list
+      const { votes } = data.voteCourse;
+      setNewVoters(votes.map((user) => user.username));
     },
     onError({ message }) {
       let errMessage = message;
@@ -44,7 +55,10 @@ function VoteButton({ voteCount, courseId, updateCount, voters }) {
             _groupHover={{ color: 'orange.400' }}
           />
         }
-        onClick={() => voteCourse({ variables: { courseId } })}
+        onClick={(e) => {
+          e.stopPropagation();
+          voteCourse({ variables: { courseId } });
+        }}
       />
 
       <Text fontSize='sm' fontWeight='600' color='gray.600'>

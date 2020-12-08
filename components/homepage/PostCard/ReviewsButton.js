@@ -1,7 +1,7 @@
 import { ChatIcon } from '@chakra-ui/icons';
 import { Button, HStack, Text } from '@chakra-ui/react';
 
-function ReviewsButton({ reviewCount }) {
+function ReviewsButton({ reviewCount, post }) {
   return (
     <HStack
       as={Button}
@@ -11,6 +11,9 @@ function ReviewsButton({ reviewCount }) {
       align='center'
       justify='center'
       px='2'
+      cursor={post && 'default'}
+      _hover={post && { bg: 'none' }}
+      _active={post && { bg: 'none' }}
     >
       <ChatIcon boxSize='14px' color='gray.600' />
       <Text fontSize='sm' color='gray.600'>

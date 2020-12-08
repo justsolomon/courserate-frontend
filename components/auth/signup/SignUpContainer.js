@@ -5,11 +5,9 @@ import SignUpForm from './SignUpForm';
 import REGISTER_USER from './signupMutation';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import {
-  refreshAction,
-  updateAuthState,
-} from '../../../graphql/state/authState';
 import redirectUser from '../form/redirect';
+import { updateAuthState } from '../../../graphql/state/auth/authActions';
+import { refreshAction } from '../../../graphql/state/auth/authState';
 
 const values = {
   username: '',

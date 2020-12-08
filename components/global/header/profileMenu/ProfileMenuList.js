@@ -6,7 +6,7 @@ import { Icon, MenuDivider, MenuList } from '@chakra-ui/react';
 function ProfileMenuList({ openModal }) {
   const router = useRouter();
   return (
-    <MenuList borderRadius='base'>
+    <MenuList borderRadius='base' minW='100px' w='200px'>
       <ProfileMenuItem
         clickAction={() => router.push(`/user/${localStorage['username']}`)}
         text='View Profile'

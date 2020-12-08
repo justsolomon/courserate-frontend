@@ -1,10 +1,12 @@
-import { Box, Text, HStack } from '@chakra-ui/react';
+import { Box, HStack } from '@chakra-ui/react';
 import PostTagList from '../PostTag/PostTagList';
 import PostCreator from './PostCreator';
 import VoteButton from './vote/VoteButton';
 import ReviewsButton from './ReviewsButton';
 import { useState } from 'react';
 import ShareMenu from './share/ShareMenu';
+import { useRouter } from 'next/router';
+import PostTitle from './PostTitle';
 
 function PostCard({
   username,
@@ -17,9 +19,11 @@ function PostCard({
   votes,
 }) {
   const [votesNum, setVotesNum] = useState(voteCount);
+  const router = useRouter();
+
   return (
     <Box
-      borderWidth='1px'
+      borderWidth={['1px 0px', '1px']}
       px='4'
       py='2'
       cursor='pointer'
@@ -27,11 +31,10 @@ function PostCard({
       w='100%'
       _hover={{ borderColor: ['none', 'gray.600'] }}
       tabIndex='0'
+      onClick={() => router.push(`/post/${id}`)}
     >
       <PostCreator createdAt={createdAt} username={username} />
-      <Text fontSize='lg' fontWeight='bold'>
-        {title}
-      </Text>
+      <PostTitle title={title} />
       <PostTagList skills={skills} />
       <HStack spacing='0'>
         <VoteButton

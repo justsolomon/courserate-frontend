@@ -8,7 +8,7 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
-import { FaLink, FaShareAlt } from 'react-icons/fa';
+import { FiLink, FiShare2 } from 'react-icons/fi';
 import ShareButton from './ShareButton';
 
 const sharePost = (title, url) => {
@@ -42,13 +42,23 @@ function ShareMenu({ link, title }) {
     <Menu placement='top' autoSelect={false}>
       <ShareButton />
       <MenuList>
-        <MenuItem onClick={onCopy}>
-          <Icon as={FaLink} boxSize='16px' color='gray.500' mr='2' />
+        <MenuItem
+          onClick={(e) => {
+            e.stopPropagation();
+            onCopy();
+          }}
+        >
+          <Icon as={FiLink} boxSize='16px' color='gray.500' mr='2' />
           <Text>Copy link to post</Text>
         </MenuItem>
         {navigator.share && (
-          <MenuItem onClick={() => sharePost(title, link)}>
-            <Icon as={FaShareAlt} boxSize='16px' color='gray.500' mr='2' />
+          <MenuItem
+            onClick={(e) => {
+              e.stopPropagation();
+              sharePost(title, link);
+            }}
+          >
+            <Icon as={FiShare2} boxSize='16px' color='gray.500' mr='2' />
             <Text>Share post via...</Text>
           </MenuItem>
         )}

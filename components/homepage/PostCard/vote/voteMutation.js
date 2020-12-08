@@ -4,6 +4,9 @@ const VOTE_COURSE = gql`
   mutation VoteMutation($courseId: ID!) {
     voteCourse(courseId: $courseId) {
       voteCount
+      votes {
+        username
+      }
     }
   }
 `;
