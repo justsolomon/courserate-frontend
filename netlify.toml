@@ -1,0 +1,15 @@
+[build]
+  publish = "out"
+  command = "next build && next export"
+
+[[redirects]]
+  from = "/post/*"
+  to = "/post/[courseId].html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/user/*"
+  to = "/user/[username].html"
+  status = 200
+  force = true
