@@ -23,7 +23,7 @@ function PostCard({
 
   return (
     <Box
-      borderWidth={['1px 0px', '1px']}
+      borderWidth={['1px 0px 0px 0px', '1px']}
       px='4'
       py='2'
       cursor='pointer'

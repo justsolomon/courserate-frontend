@@ -35,7 +35,7 @@ function Post() {
       <SEO prefix={postDetails.title ? postDetails.title : 'Course Post'} />
       {loading ? (
         <Center w='100%'>
-          <Spinner />
+          <Spinner mt={['3', '0']} />
         </Center>
       ) : (
         <CoursePost
