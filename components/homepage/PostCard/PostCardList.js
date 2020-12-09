@@ -17,7 +17,12 @@ function PostCardList() {
   });
 
   return (
-    <VStack align='flex-start' mt={['4', '0']} spacing={['0', '2']}>
+    <VStack
+      align='flex-start'
+      mt={['4', '0']}
+      spacing={['0', '2']}
+      borderBottomWidth={['1px', '0px']}
+    >
       {loading && <SkeletonList />}
       {courses.map((course, index) => (
         <PostCard key={index} {...course} />

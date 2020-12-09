@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import withApollo from '../lib/withApollo';
 import 'focus-visible/dist/focus-visible';
 import '../styles/globals.css';
+import customTheme from '../components/global/customTheme';
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -18,7 +19,7 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={customTheme}>
       <NextNProgress
         color='#63B3ED'
         startPosition={0.1}
