@@ -9,7 +9,10 @@ function Profile() {
 
   return (
     <LayoutContainer>
-      <SEO prefix={username} />
+      <SEO
+        prefix={username}
+        description={`Check out the latest reviews from ${username}`}
+      />
       <UserProfile username={username} />
     </LayoutContainer>
   );

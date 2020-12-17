@@ -30,9 +30,14 @@ function Post() {
     },
   });
 
+  const { title, username } = postDetails;
+
   return (
     <LayoutContainer>
-      <SEO prefix={postDetails.title ? postDetails.title : 'Course Post'} />
+      <SEO
+        prefix={title ? `${title} by ${username}` : 'Course Post'}
+        description={`Check out reviews on ${title}`}
+      />
       {loading ? (
         <Center w='100%'>
           <Spinner mt={['3', '0']} />
