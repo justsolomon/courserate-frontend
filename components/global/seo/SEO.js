@@ -6,7 +6,7 @@ function SEO({
 }) {
   const seo = {
     description,
-    image: '/assets/images/og_image.jpeg',
+    image: '/assets/images/og-image.jpeg',
     url: 'https://courserate.netlify.app',
     title: `${prefix} | CourseRate`,
     twitterUsername: '@gbsolomon1',
