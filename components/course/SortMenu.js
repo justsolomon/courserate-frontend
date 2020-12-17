@@ -10,11 +10,16 @@ import {
   MenuList,
   Text,
 } from '@chakra-ui/react';
+import { useEffect } from 'react';
 import { sortReviews } from '../../graphql/state/review/reviewActions';
 import { sortedBy } from '../../graphql/state/review/reviewState';
 
 function SortMenu() {
   const sortLogic = useReactiveVar(sortedBy);
+
+  useEffect(() => {
+    sortedBy('Old');
+  }, []);
 
   return (
     <Box px={['4', '0']}>
@@ -32,7 +37,9 @@ function SortMenu() {
           <HStack>
             <Text>SORT BY</Text>
             <HStack spacing='1'>
-              <Text fontSize='sm'>{sortLogic}</Text>
+              <Text fontSize='sm' color='green.500'>
+                {sortLogic}
+              </Text>
               <ChevronDownIcon boxSize='16px' />
             </HStack>
           </HStack>

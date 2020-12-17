@@ -15,7 +15,7 @@ export default function Home() {
   });
   return (
     <LayoutContainer>
-      <SEO prefix='Home'></SEO>
+      <SEO prefix='Home' />
       <Stack
         direction={['column', , 'row']}
         pl={['0', , '5%']}

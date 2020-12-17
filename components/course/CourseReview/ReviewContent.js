@@ -5,8 +5,8 @@ function ReviewContent({ reviews, title }) {
     <Box mt='1'>
       <Text fontWeight='medium'>{title}</Text>
       <UnorderedList>
-        {reviews.map((review) => (
-          <ListItem>{review}</ListItem>
+        {reviews.map((review, index) => (
+          <ListItem key={index}>{review}</ListItem>
         ))}
       </UnorderedList>
     </Box>

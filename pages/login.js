@@ -1,13 +1,14 @@
 import LoginContainer from '../components/auth/login/LoginContainer';
-import LoginForm from '../components/auth/login/LoginForm';
-import Layout from '../components/global/layout/Layout';
 import LayoutContainer from '../components/global/layout/LayoutContainer';
 import SEO from '../components/global/seo/SEO';
 
 function Login() {
   return (
     <LayoutContainer>
-      <SEO prefix='Login' />
+      <SEO
+        prefix='Login'
+        description='Welcome back to CourseRate. Sign in now to create, edit and upvote reviews on courses.'
+      />
       <LoginContainer />
     </LayoutContainer>
   );

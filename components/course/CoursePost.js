@@ -2,7 +2,6 @@ import { Box, Center, Divider, HStack, Stack, VStack } from '@chakra-ui/react';
 import PostCreator from '../homepage/PostCard/PostCreator';
 import PostTitle from '../homepage/PostCard/PostTitle';
 import ReviewsButton from '../homepage/PostCard/ReviewsButton';
-import ShareButton from '../homepage/PostCard/share/ShareButton';
 import ShareMenu from '../homepage/PostCard/share/ShareMenu';
 import VoteButton from '../homepage/PostCard/vote/VoteButton';
 import CourseLink from './CourseLink';
@@ -38,9 +37,9 @@ function CoursePost({
         spacing='1'
         borderRadius={['sm', 'base']}
       >
-        <VStack align='flex-start' px={['4', '0']} spacing='1'>
+        <VStack align='flex-start' px={['4', '0']} w='100%' spacing='1'>
           <PostCreator createdAt={createdAt} username={username} />
-          <Box>
+          <Box w='100%'>
             <PostTitle title={title} />
             <CourseLink courseLink={link} />
           </Box>
