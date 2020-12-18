@@ -13,7 +13,7 @@ function Profile() {
         prefix={username}
         description={`Check out the latest reviews from ${username}`}
       />
-      <UserProfile username={username} />
+      <UserProfile />
     </LayoutContainer>
   );
 }

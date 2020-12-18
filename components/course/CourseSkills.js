@@ -5,7 +5,7 @@ function CourseSkills({ skills }) {
   return (
     <Stack direction={['column', , 'row']}>
       <Text fontWeight='medium'>Skills covered: </Text>
-      <PostTagList skills={skills} />
+      <PostTagList skills={skills} limit={Infinity} />
     </Stack>
   );
 }

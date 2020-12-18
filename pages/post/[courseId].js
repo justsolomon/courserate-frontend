@@ -16,7 +16,7 @@ function Post() {
   const router = useRouter();
   const { courseId } = router.query;
 
-  const { loading } = useQuery(FETCH_COURSE, {
+  const { loading, refetch } = useQuery(FETCH_COURSE, {
     variables: { courseId },
     onCompleted(data) {
       const { course } = data;
@@ -45,6 +45,7 @@ function Post() {
       ) : (
         <CoursePost
           {...postDetails}
+          refetch={refetch}
           voters={voters}
           votesNum={votesNum}
           setVotesNum={setVotesNum}

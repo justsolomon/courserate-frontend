@@ -17,6 +17,8 @@ function PostCard({
   createdAt,
   id,
   votes,
+  skillLimit,
+  refetch,
 }) {
   const [votesNum, setVotesNum] = useState(voteCount);
   const router = useRouter();
@@ -35,13 +37,14 @@ function PostCard({
     >
       <PostCreator createdAt={createdAt} username={username} />
       <PostTitle title={title} />
-      <PostTagList skills={skills} />
+      <PostTagList skills={skills} limit={skillLimit} />
       <HStack spacing='0'>
         <VoteButton
           voteCount={votesNum}
           courseId={id}
           updateCount={setVotesNum}
           voters={votes.map((user) => user.username)}
+          refetchQuery={refetch}
         />
         <ReviewsButton reviewCount={reviewCount} />
         <ShareMenu
