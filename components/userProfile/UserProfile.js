@@ -5,9 +5,9 @@ import { useEffect, useState } from 'react';
 import ProfileHeader from './profileHeader/ProfileHeader';
 import UserInfo from './UserInfo';
 import UserError from './UserError';
+import UserReviews from './userReviews/UserReviews';
 import UserPosts from './UserPosts';
 import FETCH_USER from './userQuery';
-import UserReviews from './UserReviews/UserReviews';
 import NetworkError from '../global/NetworkError';
 
 function UserProfile() {
