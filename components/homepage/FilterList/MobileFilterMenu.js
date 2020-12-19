@@ -21,6 +21,7 @@ function MobileFilterMenu() {
         mx={['2', '0']}
         mt={['2', '0']}
         mb='2'
+        fontSize='15px'
       >
         Filter By
       </MenuButton>

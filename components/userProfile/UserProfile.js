@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useQuery, useReactiveVar } from '@apollo/client';
 import { Stack, VStack } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -9,6 +9,7 @@ import UserReviews from './userReviews/UserReviews';
 import UserPosts from './UserPosts';
 import FETCH_USER from './userQuery';
 import NetworkError from '../global/NetworkError';
+import { networkError } from '../../graphql/state/global/networkState';
 
 function UserProfile() {
   const router = useRouter();
@@ -17,34 +18,32 @@ function UserProfile() {
   const [profile, setProfile] = useState({ courses: [], reviews: [] });
   const [loading, setLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState('');
-  const [networkError, setNetworkError] = useState(false);
 
   const { data, error, refetch } = useQuery(FETCH_USER, {
     variables: { username },
-    errorPolicy: 'all',
   });
 
+  const netError = useReactiveVar(networkError);
+
   useEffect(() => {
-    // console.log(data, error);
     if (data) {
       setLoading(false);
       setProfile(data.user);
-      setNetworkError(false);
+      networkError(false);
       setErrorMsg('');
     } else if (error) {
       const { message } = error;
       setLoading(false);
-      if (message === 'Failed to fetch') setNetworkError(true);
+      if (message === 'Failed to fetch') networkError(true);
       setErrorMsg(message);
     }
   }, [data, error]);
 
   const refetchQuery = () => {
     refetch();
-    setNetworkError(false);
+    networkError(false);
     setErrorMsg('');
     setLoading(true);
-    console.log('refetching');
   };
 
   return (
@@ -56,7 +55,7 @@ function UserProfile() {
       pb={['2', '0']}
       w='100%'
     >
-      {!networkError ? (
+      {!netError ? (
         <>
           <UserInfo
             loading={loading}
