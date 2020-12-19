@@ -1,6 +1,6 @@
 import { VStack } from '@chakra-ui/react';
-import PostCard from '../homepage/postCard/PostCard';
-import SkeletonList from '../homepage/postCard/SkeletonList';
+import PostCard from '../homepage/PostCard/PostCard';
+import SkeletonList from '../homepage/PostCard/SkeletonList';
 import NoPosts from './NoPosts';
 
 function UserPosts({ posts, refetch, loading, username }) {
