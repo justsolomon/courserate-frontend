@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client';
 import { Stack, VStack } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import ProfileHeader from './ProfileHeader/ProfileHeader';
+import ProfileHeader from './profileHeader/ProfileHeader';
 import UserInfo from './UserInfo';
 import UserError from './UserError';
 import UserPosts from './UserPosts';
