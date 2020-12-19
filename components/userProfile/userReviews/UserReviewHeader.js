@@ -1,5 +1,5 @@
 import { HStack, Text } from '@chakra-ui/react';
-import FormattedTime from '../../homepage/postCard/FormattedTime';
+import FormattedTime from '../../homepage/PostCard/FormattedTime';
 
 function UserReviewHeader({ createdAt }) {
   return (
