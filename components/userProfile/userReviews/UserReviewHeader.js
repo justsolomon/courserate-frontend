@@ -3,7 +3,7 @@ import FormattedTime from '../../homepage/postCard/FormattedTime';
 
 function UserReviewHeader({ createdAt }) {
   return (
-    <HStack color='gray.500' fontSize='sm' spacing='1'>
+    <HStack color='gray.500' fontSize={['xs', 'sm']} spacing='1'>
       <Text>Posted</Text>
       <FormattedTime createdAt={createdAt} />
     </HStack>

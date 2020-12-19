@@ -7,6 +7,7 @@ function ProfileHeader({ username, tab }) {
       spacing={['0', , '4']}
       w='100%'
       justify={['space-between', , 'normal']}
+      borderBottomWidth={['1px', '0px']}
     >
       <ProfileHeaderLink
         active={tab !== 'reviews'}

@@ -15,8 +15,8 @@ function ReviewsButton({ reviewCount, post }) {
       _hover={post && { bg: 'none' }}
       _active={post && { bg: 'none' }}
     >
-      <ChatIcon boxSize='14px' color='gray.600' />
-      <Text fontSize='sm' color='gray.600'>
+      <ChatIcon boxSize={['12px', '14px']} color='gray.600' />
+      <Text fontSize={['13px', 'sm']} color='gray.600'>
         {reviewCount} Review{reviewCount === 1 ? '' : 's'}
       </Text>
     </HStack>

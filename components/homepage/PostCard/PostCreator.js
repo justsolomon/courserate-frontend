@@ -4,7 +4,7 @@ import FormattedTime from './FormattedTime';
 
 function PostCreator({ username, createdAt }) {
   return (
-    <Text color='gray.500' fontSize='sm'>
+    <Text color='gray.500' fontSize={['xs', 'sm']}>
       Posted by{' '}
       <Link href={`/user/${username}`}>
         <ChakraLink

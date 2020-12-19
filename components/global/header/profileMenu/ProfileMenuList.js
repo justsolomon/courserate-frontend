@@ -1,7 +1,8 @@
 import { useRouter } from 'next/router';
 import ProfileMenuItem from './ProfileMenuItem';
-import { FaEdit, FaSignOutAlt, FaUser } from 'react-icons/fa';
+import { FaRegEdit, FaRegUser } from 'react-icons/fa';
 import { Icon, MenuDivider, MenuList } from '@chakra-ui/react';
+import { FiLogOut } from 'react-icons/fi';
 
 function ProfileMenuList({ openModal }) {
   const router = useRouter();
@@ -11,14 +12,14 @@ function ProfileMenuList({ openModal }) {
         clickAction={() => router.push(`/user/${localStorage['username']}`)}
         text='View Profile'
       >
-        <Icon as={FaUser} mr='3' />
+        <Icon as={FaRegUser} mr='3' />
       </ProfileMenuItem>
       <ProfileMenuItem text='Add Course'>
-        <Icon as={FaEdit} mr='3' />
+        <Icon as={FaRegEdit} mr='3' />
       </ProfileMenuItem>
       <MenuDivider />
       <ProfileMenuItem clickAction={openModal} text='Logout'>
-        <Icon as={FaSignOutAlt} mr='3' />
+        <Icon as={FiLogOut} mr='3' />
       </ProfileMenuItem>
     </MenuList>
   );

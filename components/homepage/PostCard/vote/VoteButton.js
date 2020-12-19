@@ -58,7 +58,7 @@ function VoteButton({
         icon={
           <TriangleUpIcon
             color={vote ? 'orange.400' : 'gray.600'}
-            boxSize='16px'
+            boxSize={['14px', '16px']}
             _groupHover={{ color: 'orange.400' }}
           />
         }
@@ -68,7 +68,7 @@ function VoteButton({
         }}
       />
 
-      <Text fontSize='sm' fontWeight='600' color='gray.600'>
+      <Text fontSize={['13px', 'sm']} fontWeight='600' color='gray.600'>
         {voteCount}
       </Text>
     </HStack>

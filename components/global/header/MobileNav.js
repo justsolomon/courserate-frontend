@@ -39,7 +39,7 @@ function MobileNav(props) {
             <DrawerBody px={['4', '6']}>
               <HStack align='center' mb='4'>
                 <AppName />
-                <DrawerCloseButton mr={['4', '6']} w='0' size='lg' />
+                <DrawerCloseButton mr={['4', '6']} w='0' h='30px' size='lg' />
               </HStack>
               <SearchBar />
               {props.loggedIn ? (
