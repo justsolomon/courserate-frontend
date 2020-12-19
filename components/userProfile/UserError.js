@@ -6,7 +6,6 @@ function UserError({ error }) {
   const [errorType, setErrorType] = useState('');
 
   useEffect(() => {
-    console.log(error);
     if (error === 'Error: User not found') {
       setErrorMsg(`This user doesn't exist`);
       setErrorType('Not Found');
