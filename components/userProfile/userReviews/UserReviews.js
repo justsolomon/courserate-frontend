@@ -1,5 +1,5 @@
 import { VStack } from '@chakra-ui/react';
-import SkeletonList from '../../homepage/postCard/SkeletonList';
+import SkeletonList from '../../homepage/PostCard/SkeletonList';
 import NoPosts from '../NoPosts';
 import UserReview from './UserReview';
 
