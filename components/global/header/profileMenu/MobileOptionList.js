@@ -1,6 +1,7 @@
 import { Icon, VStack } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { FaEdit, FaSignOutAlt, FaUser } from 'react-icons/fa';
+import { FaRegEdit, FaRegUser } from 'react-icons/fa';
+import { FiLogOut } from 'react-icons/fi';
 import MobileOption from './MobileOption';
 
 function MobileOptionList({ openModal, closeDrawer }) {
@@ -15,7 +16,7 @@ function MobileOptionList({ openModal, closeDrawer }) {
         text='View Profile'
       >
         <Icon
-          as={FaUser}
+          as={FaRegUser}
           mr='3'
           boxSize='18px'
           _groupHover={{ color: 'green.500' }}
@@ -24,7 +25,7 @@ function MobileOptionList({ openModal, closeDrawer }) {
 
       <MobileOption text='Add Course'>
         <Icon
-          as={FaEdit}
+          as={FaRegEdit}
           mr='3'
           boxSize='18px'
           _groupHover={{ color: 'green.500' }}
@@ -33,7 +34,7 @@ function MobileOptionList({ openModal, closeDrawer }) {
 
       <MobileOption clickAction={openModal} text='Logout'>
         <Icon
-          as={FaSignOutAlt}
+          as={FiLogOut}
           mr='3'
           boxSize='18px'
           _groupHover={{ color: 'green.500' }}

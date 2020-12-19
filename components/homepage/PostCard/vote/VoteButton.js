@@ -6,7 +6,13 @@ import { username } from '../../../../graphql/state/auth/authState';
 import { errorToast } from '../../../auth/logout/logoutStatus';
 import VOTE_COURSE from './voteMutation';
 
-function VoteButton({ voteCount, courseId, updateCount, voters }) {
+function VoteButton({
+  voteCount,
+  courseId,
+  updateCount,
+  voters,
+  refetchQuery,
+}) {
   const [vote, setVote] = useState(false);
   const [newVoters, setNewVoters] = useState(voters);
 
@@ -21,6 +27,7 @@ function VoteButton({ voteCount, courseId, updateCount, voters }) {
 
   const [voteCourse] = useMutation(VOTE_COURSE, {
     onCompleted(data) {
+      refetchQuery();
       let newVoteCount = data.voteCourse.voteCount;
 
       if (newVoteCount > voteCount) setVote(true);
@@ -35,7 +42,7 @@ function VoteButton({ voteCount, courseId, updateCount, voters }) {
     onError({ message }) {
       let errMessage = message;
       if (message === 'Refresh token has expired.')
-        errMessage = 'You have to be logged in.';
+        errMessage = 'You have to be logged in to vote for a course.';
       toast({ ...errorToast, description: errMessage });
     },
   });
@@ -43,7 +50,7 @@ function VoteButton({ voteCount, courseId, updateCount, voters }) {
   return (
     <HStack spacing='0' mr='2' pb='0.07rem'>
       <IconButton
-        aria-label='Upvote post'
+        aria-label='Upvote Post'
         variant='ghost'
         role='group'
         padding='0'
@@ -51,7 +58,7 @@ function VoteButton({ voteCount, courseId, updateCount, voters }) {
         icon={
           <TriangleUpIcon
             color={vote ? 'orange.400' : 'gray.600'}
-            boxSize='16px'
+            boxSize={['14px', '16px']}
             _groupHover={{ color: 'orange.400' }}
           />
         }
@@ -61,7 +68,7 @@ function VoteButton({ voteCount, courseId, updateCount, voters }) {
         }}
       />
 
-      <Text fontSize='sm' fontWeight='600' color='gray.600'>
+      <Text fontSize={['13px', 'sm']} fontWeight='600' color='gray.600'>
         {voteCount}
       </Text>
     </HStack>

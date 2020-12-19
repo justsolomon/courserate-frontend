@@ -1,4 +1,4 @@
-import { HStack, Link as ChakraLink, Circle, Icon } from '@chakra-ui/react';
+import { HStack, Link as ChakraLink, Icon } from '@chakra-ui/react';
 import Link from 'next/link';
 import { FaCircle } from 'react-icons/fa';
 import FormattedTime from '../../homepage/PostCard/FormattedTime';

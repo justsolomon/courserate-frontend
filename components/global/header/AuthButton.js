@@ -6,7 +6,6 @@ function AuthButton({ goToAuthPage, authText }) {
     <LightMode>
       <Button
         onClick={goToAuthPage}
-        color='white'
         variant={login && 'outline'}
         d={login && ['block', , 'none']}
         bg={!login && 'green.400'}

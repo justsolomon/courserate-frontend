@@ -10,10 +10,12 @@ function ShareButton() {
       spacing='2'
       px='2'
       py='0'
-      leftIcon={<Icon as={FaShare} boxSize='14px' color='gray.600' />}
+      leftIcon={
+        <Icon as={FaShare} boxSize={['12px', '14px']} color='gray.600' />
+      }
       onClick={(e) => e.stopPropagation()}
     >
-      <Text fontSize='sm' color='gray.600'>
+      <Text fontSize={['13px', 'sm']} color='gray.600'>
         Share
       </Text>
     </MenuButton>

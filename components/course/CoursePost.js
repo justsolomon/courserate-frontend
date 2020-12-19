@@ -25,6 +25,7 @@ function CoursePost({
   votesNum,
   setVotesNum,
   voters,
+  refetch,
 }) {
   return (
     <Center w='100%'>
@@ -37,7 +38,13 @@ function CoursePost({
         spacing='1'
         borderRadius={['sm', 'base']}
       >
-        <VStack align='flex-start' px={['4', '0']} w='100%' spacing='1'>
+        <VStack
+          align='flex-start'
+          fontSize={['15px', 'md']}
+          px={['4', '0']}
+          w='100%'
+          spacing='1'
+        >
           <PostCreator createdAt={createdAt} username={username} />
           <Box w='100%'>
             <PostTitle title={title} />
@@ -52,6 +59,7 @@ function CoursePost({
               courseId={id}
               updateCount={setVotesNum}
               voters={voters}
+              refetchQuery={refetch}
             />
             <ReviewsButton reviewCount={reviewCount} post />
             <ShareMenu
