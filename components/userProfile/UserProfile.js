@@ -25,7 +25,7 @@ function UserProfile() {
   });
 
   useEffect(() => {
-    console.log(data, error);
+    // console.log(data, error);
     if (data) {
       setLoading(false);
       setProfile(data.user);
