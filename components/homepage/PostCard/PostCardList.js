@@ -1,27 +1,15 @@
-import { useQuery } from '@apollo/client';
 import { VStack } from '@chakra-ui/react';
-import { useState } from 'react';
-import FETCH_COURSES from './coursesQuery';
+import { networkError } from '../../../graphql/state/global/networkState';
 import PostCard from './PostCard';
 import SkeletonList from './SkeletonList';
 
-function PostCardList() {
-  const [courses, setCourses] = useState([]);
-  const { loading, refetch } = useQuery(FETCH_COURSES, {
-    onCompleted(data) {
-      setCourses(data.courses);
-    },
-    onError({ message }) {
-      console.log(message);
-    },
-  });
-
+function PostCardList({ courses, loading, refetch }) {
   return (
     <VStack
       align='flex-start'
       mt={['4', '0']}
       spacing={['0', '2']}
-      borderBottomWidth={['1px', '0px']}
+      borderBottomWidth={!networkError() && ['1px', '0px']}
       w={['unset', , , '60%', '47%']}
     >
       {loading && <SkeletonList />}

@@ -6,6 +6,7 @@ import withApollo from '../lib/withApollo';
 import 'focus-visible/dist/focus-visible';
 import '../styles/globals.css';
 import customTheme from '../components/global/customTheme';
+import { networkError } from '../graphql/state/global/networkState';
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -16,6 +17,9 @@ function MyApp({ Component, pageProps }) {
       username(localStorage['username']);
     }
     loggedIn(userLoggedIn);
+
+    //clear network error
+    // networkError(false);
   }, []);
 
   return (

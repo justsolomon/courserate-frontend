@@ -1,34 +1,50 @@
-import { useQuery } from '@apollo/client';
+import { useQuery, useReactiveVar } from '@apollo/client';
 import { Center, Spinner } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CoursePost from '../../components/course/CoursePost';
 import FETCH_COURSE from '../../components/course/courseQuery';
 import LayoutContainer from '../../components/global/layout/LayoutContainer';
+import NetworkError from '../../components/global/NetworkError';
 import SEO from '../../components/global/seo/SEO';
+import { networkError } from '../../graphql/state/global/networkState';
 import { allReviews } from '../../graphql/state/review/reviewState';
 
 function Post() {
   const [postDetails, setPostDetails] = useState({ skills: [] });
   const [voters, setVoters] = useState([]);
   const [votesNum, setVotesNum] = useState();
+  const [loading, setLoading] = useState(true);
+  const netError = useReactiveVar(networkError);
 
   const router = useRouter();
   const { courseId } = router.query;
 
-  const { loading, refetch } = useQuery(FETCH_COURSE, {
+  const { data, error, refetch } = useQuery(FETCH_COURSE, {
     variables: { courseId },
-    onCompleted(data) {
+  });
+
+  useEffect(() => {
+    if (data) {
       const { course } = data;
       setPostDetails(course);
       setVoters(course.votes.map((user) => user.username));
       setVotesNum(course.voteCount);
       allReviews(course.reviews);
-    },
-    onError({ message }) {
-      console.log(message);
-    },
-  });
+      networkError(false);
+      setLoading(false);
+    } else if (error) {
+      setLoading(false);
+      const { message } = error;
+      if (message === 'Failed to fetch') networkError(true);
+    }
+  }, [data, error]);
+
+  const refetchQuery = () => {
+    networkError(false);
+    setLoading(true);
+    refetch();
+  };
 
   const { title, username } = postDetails;
 
@@ -38,18 +54,26 @@ function Post() {
         prefix={title ? `${title} by ${username}` : 'Course Post'}
         description={`Check out reviews on ${title}`}
       />
-      {loading ? (
-        <Center w='100%'>
-          <Spinner mt={['3', '0']} />
+      {netError ? (
+        <Center pt={['4', '0']}>
+          <NetworkError refetchQuery={refetchQuery} />
         </Center>
       ) : (
-        <CoursePost
-          {...postDetails}
-          refetch={refetch}
-          voters={voters}
-          votesNum={votesNum}
-          setVotesNum={setVotesNum}
-        />
+        <>
+          {loading ? (
+            <Center w='100%'>
+              <Spinner mt={['3', '0']} />
+            </Center>
+          ) : (
+            <CoursePost
+              {...postDetails}
+              refetch={refetch}
+              voters={voters}
+              votesNum={votesNum}
+              setVotesNum={setVotesNum}
+            />
+          )}
+        </>
       )}
     </LayoutContainer>
   );
