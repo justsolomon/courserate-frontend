@@ -18,7 +18,7 @@ function SortMenu() {
   const sortLogic = useReactiveVar(sortedBy);
 
   useEffect(() => {
-    sortedBy('Old');
+    sortedBy('New');
   }, []);
 
   return (

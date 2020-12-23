@@ -15,11 +15,23 @@ function AuthRoutes() {
       direction={['column', 'row', 'row']}
     >
       <Box fontWeight='bold' d={['none', , 'block']}>
-        <NavLink path='login' text='Login' hoverable />
+        <NavLink
+          path={`login/?returnPath=${router.asPath}`}
+          as='login'
+          text='Login'
+          hoverable
+        />
       </Box>
-      <AuthButton goToAuthPage={() => router.push('/login')} authText='Login' />
       <AuthButton
-        goToAuthPage={() => router.push('/signup')}
+        goToAuthPage={() =>
+          router.push(`/login/?returnPath=${router.asPath}`, 'login')
+        }
+        authText='Login'
+      />
+      <AuthButton
+        goToAuthPage={() =>
+          router.push(`/signup/?returnPath=${router.asPath}`, 'signup')
+        }
         authText='Sign Up'
       />
     </Stack>

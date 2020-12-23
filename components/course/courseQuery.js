@@ -10,10 +10,12 @@ const FETCH_COURSE = gql`
       link
       website
       cost
+      level
       skills
       reviewCount
       voteCount
       reviews {
+        id
         pros
         cons
         username

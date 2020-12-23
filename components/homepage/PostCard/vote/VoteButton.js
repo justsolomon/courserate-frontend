@@ -1,6 +1,6 @@
 import { useMutation } from '@apollo/client';
 import { TriangleUpIcon } from '@chakra-ui/icons';
-import { HStack, IconButton, Text, useToast } from '@chakra-ui/react';
+import { HStack, Button, Text, useToast } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { username } from '../../../../graphql/state/auth/authState';
 import { errorToast } from '../../../auth/logout/logoutStatus';
@@ -48,29 +48,29 @@ function VoteButton({
   });
 
   return (
-    <HStack spacing='0' mr='2' pb='0.07rem'>
-      <IconButton
-        aria-label='Upvote Post'
-        variant='ghost'
-        role='group'
-        padding='0'
-        size='sm'
-        icon={
-          <TriangleUpIcon
-            color={vote ? 'orange.400' : 'gray.600'}
-            boxSize={['14px', '16px']}
-            _groupHover={{ color: 'orange.400' }}
-          />
-        }
-        onClick={(e) => {
-          e.stopPropagation();
-          voteCourse({ variables: { courseId } });
-        }}
+    <HStack
+      as={Button}
+      aria-label='Upvote Post'
+      variant='ghost'
+      role='group'
+      padding='0'
+      size='sm'
+      px='2'
+      ml='-2'
+      fontSize={['13px', 'sm']}
+      color={vote ? 'orange.400' : 'gray.600'}
+      onClick={(e) => {
+        e.stopPropagation();
+        voteCourse({ variables: { courseId } });
+      }}
+      _hover={{ color: 'orange.400' }}
+    >
+      <TriangleUpIcon
+        color={vote ? 'orange.400' : 'gray.600'}
+        boxSize={['14px', '16px']}
+        _groupHover={{ color: 'orange.400' }}
       />
-
-      <Text fontSize={['13px', 'sm']} fontWeight='600' color='gray.600'>
-        {voteCount}
-      </Text>
+      <Text>{voteCount}</Text>
     </HStack>
   );
 }

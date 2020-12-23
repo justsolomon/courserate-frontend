@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@700&display=swap');
+
 * {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -7,4 +8,11 @@
   -ms-user-select: none;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
+}
+
+@media screen and (min-width: 960px) {
+  html {
+    width: 100vw;
+    overflow-x: hidden;
+  }
 }

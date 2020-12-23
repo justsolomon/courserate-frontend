@@ -1,5 +1,5 @@
 import { useQuery, useReactiveVar } from '@apollo/client';
-import { Center, Spinner } from '@chakra-ui/react';
+import { Box, Center, HStack, Spinner } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import CoursePost from '../../components/course/CoursePost';
@@ -8,7 +8,11 @@ import LayoutContainer from '../../components/global/layout/LayoutContainer';
 import NetworkError from '../../components/global/NetworkError';
 import SEO from '../../components/global/seo/SEO';
 import { networkError } from '../../graphql/state/global/networkState';
-import { allReviews } from '../../graphql/state/review/reviewState';
+import { sortReviews } from '../../graphql/state/review/reviewActions';
+import {
+  coursePostId,
+  refetchCourse,
+} from '../../graphql/state/review/reviewState';
 
 function Post() {
   const [postDetails, setPostDetails] = useState({ skills: [] });
@@ -24,13 +28,17 @@ function Post() {
     variables: { courseId },
   });
 
+  //store refetch function in state
+  refetchCourse(refetch);
+
   useEffect(() => {
     if (data) {
       const { course } = data;
       setPostDetails(course);
       setVoters(course.votes.map((user) => user.username));
       setVotesNum(course.voteCount);
-      allReviews(course.reviews);
+      sortReviews('New', course.reviews);
+      coursePostId(course.id);
       networkError(false);
       setLoading(false);
     } else if (error) {
@@ -65,13 +73,25 @@ function Post() {
               <Spinner mt={['3', '0']} />
             </Center>
           ) : (
-            <CoursePost
-              {...postDetails}
-              refetch={refetch}
-              voters={voters}
-              votesNum={votesNum}
-              setVotesNum={setVotesNum}
-            />
+            <HStack
+              w='100%'
+              justify={['center', , , 'flex-start']}
+              align='flex-start'
+              spacing={['0', , , '12']}
+            >
+              <Box
+                borderWidth='1px'
+                h='250px'
+                w='20%'
+                d={['none', , , 'block']}
+              ></Box>
+              <CoursePost
+                {...postDetails}
+                voters={voters}
+                votesNum={votesNum}
+                setVotesNum={setVotesNum}
+              />
+            </HStack>
           )}
         </>
       )}
