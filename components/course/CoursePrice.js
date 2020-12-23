@@ -4,7 +4,7 @@ function CoursePrice({ price }) {
   return (
     <HStack>
       <Text fontWeight='medium'>Cost:</Text>
-      <Text>{Number(price) ? 'Paid' : 'Free'}</Text>
+      <Text fontSize='15px'>{Number(price) ? 'Paid' : 'Free'}</Text>
     </HStack>
   );
 }

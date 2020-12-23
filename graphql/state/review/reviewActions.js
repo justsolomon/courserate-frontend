@@ -1,7 +1,6 @@
 import { allReviews, sortedBy } from './reviewState';
 
-export const sortReviews = (sortLogic) => {
-  let reviews = allReviews();
+export const sortReviews = (sortLogic, reviews = allReviews()) => {
   if (sortLogic === 'New')
     reviews = reviews
       .slice()
@@ -19,6 +18,4 @@ export const sortReviews = (sortLogic) => {
 
   allReviews(reviews);
   sortedBy(sortLogic);
-  console.log(sortedBy());
-  console.log(allReviews());
 };

@@ -35,7 +35,9 @@ function LoginContainer() {
       const startSilentRefresh = refreshAction();
       startSilentRefresh(true);
 
-      setTimeout(() => router.push('/'), 1000);
+      //redirect to previous page
+      const { returnPath } = router.query;
+      setTimeout(() => router.push(returnPath ? returnPath : '/'), 1000);
     },
     onError({ message }) {
       formActions.setSubmitting(false);

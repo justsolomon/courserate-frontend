@@ -46,7 +46,7 @@ function PostCard({
           voters={votes.map((user) => user.username)}
           refetchQuery={refetch}
         />
-        <ReviewsButton reviewCount={reviewCount} />
+        <ReviewsButton reviewCount={reviewCount} home />
         <ShareMenu
           link={`https://courserate.netlify.app/post/${id}`}
           title={title}
