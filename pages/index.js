@@ -9,6 +9,7 @@ import PostCardList from '../components/homepage/PostCard/PostCardList';
 import { networkError } from '../graphql/state/global/networkState';
 import NetworkError from '../components/global/NetworkError';
 import FETCH_COURSES from '../components/homepage/PostCard/coursesQuery';
+import { courseDeleted } from '../graphql/state/course/courseState';
 
 export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
@@ -21,6 +22,13 @@ export default function Home() {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const { data, error, refetch } = useQuery(FETCH_COURSES);
+
+  const deleted = useReactiveVar(courseDeleted);
+  useEffect(() => {
+    //refetch all courses to reflect added/deleted courses
+    refetch();
+    courseDeleted(false);
+  }, [deleted]);
 
   const netError = useReactiveVar(networkError);
 

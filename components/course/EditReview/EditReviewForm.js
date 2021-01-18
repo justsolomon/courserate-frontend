@@ -10,6 +10,7 @@ import { errorToast, successToast } from '../../auth/logout/logoutStatus';
 import Criterion from '../CreateReview/Criterion';
 import SubmitReview from '../CreateReview/SubmitReview';
 import EDIT_REVIEW from './editReviewMutation';
+import filterCriterion from './filterCriterion';
 
 function EditReviewForm(props) {
   const { reviewId, cancelEdit } = props;
@@ -23,8 +24,8 @@ function EditReviewForm(props) {
     variables: {
       courseId,
       reviewId,
-      pros: pros.split(/\n/),
-      cons: cons.split(/\n/),
+      pros: filterCriterion(pros),
+      cons: filterCriterion(cons),
     },
     onCompleted(data) {
       refetchCourse()();
@@ -66,7 +67,9 @@ function EditReviewForm(props) {
           Cancel
         </Button>
         <SubmitReview
-          disabled={cons === '' || pros === ''}
+          disabled={
+            !filterCriterion(cons).length || !filterCriterion(pros).length
+          }
           loading={loading}
           edit
         />

@@ -58,7 +58,6 @@ function SignUpContainer() {
     <Formik
       initialValues={values}
       onSubmit={(values, actions) => {
-        console.log(values);
         setFormActions(actions);
         registerUser({ variables: values });
       }}

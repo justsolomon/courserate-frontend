@@ -5,6 +5,7 @@ function SubmitReview({ disabled, loading, edit }) {
     <Button
       type='submit'
       bg='green.400'
+      color='white'
       colorScheme='green'
       float='right'
       fontSize={['sm', '15px']}

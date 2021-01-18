@@ -1,7 +1,7 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import NextNProgress from 'nextjs-progressbar';
 import { loggedIn, username } from '../graphql/state/auth/authState';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import withApollo from '../lib/withApollo';
 import 'focus-visible/dist/focus-visible';
 import '../styles/globals.css';
@@ -9,7 +9,10 @@ import customTheme from '../components/global/customTheme';
 import { networkError } from '../graphql/state/global/networkState';
 
 function MyApp({ Component, pageProps }) {
+  const [window, setWindow] = useState(false);
+
   useEffect(() => {
+    if (localStorage) setWindow(true);
     //store loggedIn status in state
     let userLoggedIn = localStorage['loggedIn'];
     if (userLoggedIn) {
@@ -31,7 +34,7 @@ function MyApp({ Component, pageProps }) {
         height='2'
         options={{ showSpinner: false }}
       />
-      <Component {...pageProps} />
+      {window && <Component {...pageProps} />}
     </ChakraProvider>
   );
 }

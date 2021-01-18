@@ -7,7 +7,6 @@ function ShareButton() {
       as={Button}
       size='sm'
       variant='ghost'
-      spacing='2'
       px='2'
       py='0'
       leftIcon={

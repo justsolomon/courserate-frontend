@@ -73,25 +73,29 @@ function Post() {
               <Spinner mt={['3', '0']} />
             </Center>
           ) : (
-            <HStack
+            <>
+              {/*<HStack
               w='100%'
               justify={['center', , , 'flex-start']}
               align='flex-start'
               spacing={['0', , , '12']}
-            >
-              <Box
+            > 
+               <Box
                 borderWidth='1px'
                 h='250px'
                 w='20%'
                 d={['none', , , 'block']}
-              ></Box>
-              <CoursePost
-                {...postDetails}
-                voters={voters}
-                votesNum={votesNum}
-                setVotesNum={setVotesNum}
-              />
-            </HStack>
+              ></Box> 
+              </HStack> */}
+              <Center>
+                <CoursePost
+                  {...postDetails}
+                  voters={voters}
+                  votesNum={votesNum}
+                  setVotesNum={setVotesNum}
+                />
+              </Center>
+            </>
           )}
         </>
       )}

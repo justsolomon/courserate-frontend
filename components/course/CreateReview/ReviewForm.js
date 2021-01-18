@@ -6,6 +6,7 @@ import { sortReviews } from '../../../graphql/state/review/reviewActions';
 import { refetchCourse } from '../../../graphql/state/review/reviewState';
 import BlueLink from '../../auth/form/BlueLink';
 import { errorToast, successToast } from '../../auth/logout/logoutStatus';
+import filterCriterion from '../EditReview/filterCriterion';
 import CREATE_REVIEW from './createReviewMutation';
 import Criterion from './Criterion';
 import SubmitReview from './SubmitReview';
@@ -17,7 +18,11 @@ function ReviewForm({ courseId }) {
   const toast = useToast();
 
   const [createReview, { loading }] = useMutation(CREATE_REVIEW, {
-    variables: { courseId, pros: pros.split(/\n/), cons: cons.split(/\n/) },
+    variables: {
+      courseId,
+      pros: filterCriterion(pros),
+      cons: filterCriterion(cons),
+    },
     onCompleted(data) {
       refetchCourse()();
       sortReviews('New', data.createReview.reviews);
@@ -58,7 +63,12 @@ function ReviewForm({ courseId }) {
           placeholder='Share some of the downsides of learning this course'
         />
       </VStack>
-      <SubmitReview disabled={cons === '' || pros === ''} loading={loading} />
+      <SubmitReview
+        disabled={
+          !filterCriterion(cons).length || !filterCriterion(pros).length
+        }
+        loading={loading}
+      />
     </Box>
   );
 }

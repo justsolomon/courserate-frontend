@@ -14,7 +14,10 @@ function ProfileMenuList({ openModal }) {
       >
         <Icon as={FaRegUser} mr='3' />
       </ProfileMenuItem>
-      <ProfileMenuItem text='Add Course'>
+      <ProfileMenuItem
+        text='Add Course'
+        clickAction={() => router.push(`/create`)}
+      >
         <Icon as={FaRegEdit} mr='3' />
       </ProfileMenuItem>
       <MenuDivider />
