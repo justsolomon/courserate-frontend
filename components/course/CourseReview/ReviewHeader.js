@@ -7,7 +7,7 @@ import ReviewActionMenu from './ReviewActionMenu';
 
 function ReviewHeader({ username, createdAt, reviewId, openEdit }) {
   return (
-    <HStack align='center' fontSize='sm' h='21px'>
+    <HStack align='center' fontSize='13px' h='21px'>
       <Link href={`/user/${username}`}>
         <ChakraLink
           href={`/user/${username}`}

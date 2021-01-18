@@ -12,8 +12,10 @@ import CoursePrice from './CoursePrice';
 import CourseReviewList from './CourseReview/CourseReviewList';
 import CourseSkills from './CourseSkills';
 import ReviewForm from './CreateReview/ReviewForm';
+import { username as user } from '../../graphql/state/auth/authState';
 import PlatformLink from './PlatformLink';
 import SortMenu from './SortMenu';
+import CourseActionMenu from './CourseActionMenu';
 
 function CoursePost({
   id,
@@ -79,14 +81,19 @@ function CoursePost({
             link={`https://courserate.netlify.app/post/${id}`}
             title={title}
           />
+          {user() === username && <CourseActionMenu courseId={id} />}
         </HStack>
       </VStack>
       {review && <ReviewForm courseId={id} />}
-      <Center w='100%' mb='3'>
-        <Divider />
-      </Center>
-      <SortMenu />
-      <CourseReviewList />
+      {reviewCount > 0 && (
+        <>
+          <Center w='100%' mb='3'>
+            <Divider />
+          </Center>
+          <SortMenu />
+          <CourseReviewList />
+        </>
+      )}
     </VStack>
   );
 }

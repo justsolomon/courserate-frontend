@@ -7,6 +7,8 @@ import { useState } from 'react';
 import ShareMenu from './share/ShareMenu';
 import { useRouter } from 'next/router';
 import PostTitle from './PostTitle';
+import CourseActionMenu from '../../course/CourseActionMenu';
+import { username as user } from '../../../graphql/state/auth/authState';
 
 function PostCard({
   username,
@@ -51,6 +53,7 @@ function PostCard({
           link={`https://courserate.netlify.app/post/${id}`}
           title={title}
         />
+        {user() === username && <CourseActionMenu courseId={id} />}
       </HStack>
     </Box>
   );

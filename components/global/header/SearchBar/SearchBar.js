@@ -3,7 +3,7 @@ import { FaSearch } from 'react-icons/fa';
 
 function SearchBar() {
   return (
-    <InputGroup>
+    <InputGroup w={['100%', , , '300px']}>
       <InputLeftElement
         pointerEvents='none'
         color='gray.300'

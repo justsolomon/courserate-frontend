@@ -1,5 +1,5 @@
 import { WarningIcon } from '@chakra-ui/icons';
-import { FormErrorMessage, HStack } from '@chakra-ui/react';
+import { FormErrorMessage } from '@chakra-ui/react';
 
 function ErrorMessage({ error }) {
   return (

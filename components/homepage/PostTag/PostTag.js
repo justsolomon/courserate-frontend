@@ -4,7 +4,13 @@ function PostTag({ title }) {
   const [mobile] = useMediaQuery('(max-width: 30em)');
 
   return (
-    <Tag _hover={{ bg: 'gray.300' }} size={mobile ? 'sm' : 'md'} mr='2' mb='2'>
+    <Tag
+      size={mobile ? 'sm' : 'md'}
+      fontSize={['xs', '13px']}
+      mr='2'
+      mb='2'
+      borderRadius='base'
+    >
       {title}
     </Tag>
   );

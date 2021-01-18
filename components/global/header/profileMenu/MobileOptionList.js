@@ -23,7 +23,13 @@ function MobileOptionList({ openModal, closeDrawer }) {
         />
       </MobileOption>
 
-      <MobileOption text='Add Course'>
+      <MobileOption
+        text='Add Course'
+        clickAction={() => {
+          router.push(`/create`);
+          closeDrawer();
+        }}
+      >
         <Icon
           as={FaRegEdit}
           mr='3'
