@@ -74,7 +74,7 @@ function SkillsInput({ skills }) {
                 onKeyDown={(e) => {
                   let value = e.target.value.trim();
 
-                  if (e.keyCode === 32 && value !== '') {
+                  if (e.key === ' ' && value !== '') {
                     if (!skills.includes(value)) {
                       push(value);
                       e.target.value = '';
