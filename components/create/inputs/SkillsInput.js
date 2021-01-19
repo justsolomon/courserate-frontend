@@ -65,7 +65,7 @@ function SkillsInput({ skills }) {
                 _focus={{ border: 'none' }}
                 w='100px'
                 fontSize='15px'
-                onKeyUp={(e) => {
+                onKeyDown={(e) => {
                   let value = e.target.value.trim();
 
                   if (e.keyCode === 32 && value !== '') {
