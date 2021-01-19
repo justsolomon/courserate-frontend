@@ -41,6 +41,12 @@ function SkillsInput({ skills }) {
               borderRadius='base'
               borderColor={error ? '#E53E3E' : borderColor}
               boxShadow={error && '0 0 0 1px #E53E3E'}
+              role='group'
+              tabIndex='0'
+              _focusWithin={{
+                borderColor: '#3182ce',
+                boxShadow: '0 0 0 1px #3182ce !important',
+              }}
             >
               <HStack wrap='wrap' pt='2' spacing='0'>
                 {skills.map((skill, index) => (
