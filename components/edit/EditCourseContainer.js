@@ -29,7 +29,9 @@ function EditCourseContainer({ title, link, level, cost, skills, id }) {
     },
     onError({ message }) {
       formActions.setSubmitting(false);
-      toast({ ...errorToast, description: message });
+      if (message !== 'Object(...)(...) is not a function') {
+        toast({ ...errorToast, description: message });
+      }
     },
   });
 
