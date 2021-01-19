@@ -71,10 +71,14 @@ function SkillsInput({ skills }) {
                 _focus={{ border: 'none' }}
                 w='100px'
                 fontSize='15px'
-                onKeyDown={(e) => {
+                onChange={(e) => {
+                  let initialValue = e.target.value;
                   let value = e.target.value.trim();
 
-                  if (e.key === ' ' && value !== '') {
+                  if (
+                    initialValue[initialValue.length - 1] === ' ' &&
+                    value !== ''
+                  ) {
                     if (!skills.includes(value)) {
                       push(value);
                       e.target.value = '';
