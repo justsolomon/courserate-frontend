@@ -1,6 +1,8 @@
 import {
   FormControl,
   FormLabel,
+  InputGroup,
+  InputLeftElement,
   NumberInput,
   NumberInputField,
 } from '@chakra-ui/react';
@@ -17,7 +19,18 @@ function CostInput() {
               Cost
             </FormLabel>
             <NumberInput value={field.value} id='cost' fontSize='15px'>
-              <NumberInputField onChange={field.onChange} borderRadius='base' />
+              <InputLeftElement
+                pointerEvents='none'
+                color='gray.300'
+                fontSize='1.2em'
+                children='$'
+              />
+              <NumberInputField
+                pl='9'
+                onChange={field.onChange}
+                borderRadius='base'
+                placeholder='Enter amount'
+              />
             </NumberInput>
             <ErrorMessage error={form.errors.cost} />
           </FormControl>

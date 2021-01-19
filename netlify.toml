@@ -13,3 +13,9 @@
   to = "/user/[username].html"
   status = 200
   force = true
+
+[[redirects]]
+  from = "/edit/*"
+  to = "/edit/[courseId].html"
+  status = 200
+  force = true

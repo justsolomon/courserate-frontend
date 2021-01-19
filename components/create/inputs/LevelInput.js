@@ -1,12 +1,4 @@
-import {
-  FormControl,
-  FormLabel,
-  Input,
-  optionGroup,
-  Stack,
-  option,
-  Select,
-} from '@chakra-ui/react';
+import { FormControl, FormLabel, Select } from '@chakra-ui/react';
 import { Field } from 'formik';
 import ErrorMessage from '../../auth/form/ErrorMessage';
 
@@ -23,6 +15,10 @@ function LevelInput() {
               placeholder='Select level'
               {...field}
               fontSize='15px'
+              _focus={{
+                boxShadow: '0 0 0 1px #3182ce !important',
+                borderColor: '#3182ce',
+              }}
               borderRadius='base'
             >
               <option value='Beginner'>Beginner</option>

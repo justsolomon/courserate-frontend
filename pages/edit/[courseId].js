@@ -7,6 +7,7 @@ import LayoutContainer from '../../components/global/layout/LayoutContainer';
 import SEO from '../../components/global/seo/SEO';
 import { useQuery, useReactiveVar } from '@apollo/client';
 import { Center, Spinner } from '@chakra-ui/react';
+import NetworkError from '../../components/global/NetworkError';
 
 function EditPost() {
   const [postDetails, setPostDetails] = useState({});
