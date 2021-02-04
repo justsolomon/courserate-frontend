@@ -1,9 +1,11 @@
+import { useColorModeValue } from '@chakra-ui/react';
 import Head from 'next/head';
 
 function SEO({
   prefix,
   description = 'Create, edit and share reviews on courses. Check out reviews posted by others and upvote relevant ones.',
 }) {
+  const themeColor = useColorModeValue('#FFFFFF', '#1A202C');
   const seo = {
     description,
     image: '/assets/images/og-image.jpeg',
@@ -15,6 +17,7 @@ function SEO({
   return (
     <Head>
       <title>{seo.title}</title>
+      <link rel='manifest' href='/manifest.json' />
       <link
         rel='apple-touch-icon'
         sizes='180x180'
@@ -36,6 +39,7 @@ function SEO({
         name='google-site-verification'
         content='yGdYK6tGmhLsJIcdEyc8NMSz2WpP4tGVjkT1K6woGdk'
       />
+      <meta name='theme-color' content={themeColor} />
       <meta name='viewport' content='width=device-width, initial-scale=1' />
       <meta name='description' content={seo.description} />
       <meta name='image' content={seo.image} />
